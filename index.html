@@ -4,117 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header>
-        <h1>SERGUS</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#produtos">Coleção</a>
-            <a href="#quiz-secao">Ache Seu Tênis</a>
-        </nav>
-    </header>
-
-    <section class="banner">
-        <h2>Estilo Urbano Jovem</h2>
-        <p>Encontre os melhores sapatos masculinos e tênis streetwear para o seu dia a dia.</p>
-    </section>
-
-    <section id="quiz-secao" class="container">
-        <h3 class="titulo-secao">Descubra seu Estilo Sergus</h3>
-        <div class="quiz-container">
-            <p class="quiz-pergunta">1. Qual é o seu rolê perfeito no fim de semana?</p>
-            <div class="quiz-opcoes">
-                <button onclick="responder(1, 'casual')">Andar de skate / Encontro com amigos</button>
-                <button onclick="responder(1, 'urbano')">Show / Ir a uma festa à noite</button>
-                <button onclick="responder(1, 'minimalista')">Shopping / Faculdade / Algo tranquilo</button>
-            </div>
-
-            <p class="quiz-pergunta" style="margin-top: 20px;">2. O que você prioriza na hora de se vestir?</p>
-            <div class="quiz-opcoes">
-                <button onclick="responder(2, 'casual')">Estilo Streetwear bem marcante</button>
-                <button onclick="responder(2, 'urbano')">Algo mais imponente e com atitude</button>
-                <button onclick="responder(2, 'minimalista')">Praticidade, conforto e cores neutras</button>
-            </div>
-
-            <div id="resultado-quiz" class="resultado-box" style="display: none;">
-                <h4>Seu Tênis Ideal é:</h4>
-                <p id="texto-resultado"></p>
-            </div>
-        </div>
-    </section>
-
-    <main id="produtos" class="container">
-        <h3 class="titulo-secao">Lançamentos Tendência 2026</h3>
-        
-        <div class="vitrine">
-            <div class="produto-card">
-                <div class="produto-foto">[ Tênis Streetwear ]</div>
-                <div class="produto-nome">Tênis Streetwear Urban</div>
-                <div class="produto-desc">Tênis casual masculino com sola alta, super confortável para a faculdade ou rolê.</div>
-                <div class="produto-preco">R$ 249,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
-
-            <div class="produto-card">
-                <div class="produto-foto">[ Coturno ]</div>
-                <div class="produto-nome">Bota Coturno Casual</div>
-                <div class="produto-desc">Bota masculina estilo jovem em couro sintético preto, ideal para um visual moderno.</div>
-                <div class="produto-preco">R$ 289,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
-
-            <div class="produto-card">
-                <div class="produto-foto">[ Mocassim ]</div>
-                <div class="produto-nome">Mocassim Jovem Slim</div>
-                <div class="produto-desc">Sapato casual masculino sem cadarço, estilo e praticidade no visual minimalista.</div>
-                <div class="produto-preco">R$ 199,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
-
-            <div class="produto-card">
-                <div class="produto-foto">[ Sneaker Retro ]</div>
-                <div class="produto-nome">Sneaker Retro Vibe</div>
-                <div class="produto-desc">Inspirado na cultura dos anos 90, perfeito para quem dita tendências nas ruas.</div>
-                <div class="produto-preco">R$ 319,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Sergus Calçados. Atividade Escolar - Todos os direitos reservados.</p>
-    </footer>
-
-    <script>
-        let respostas = { q1: '', q2: '' };
-
-        function responder(pergunta, estilo) {
-            if (pergunta === 1) respostas.q1 = estilo;
-            if (pergunta === 2) respostas.q2 = estilo;
-
-            // Alerta visual simples para o usuário saber que clicou
-            event.target.style.backgroundColor = "#a1a1aa";
-            event.target.style.color = "#09090b";
-
-            // Se respondeu as duas perguntas, mostra o resultado
-            if (respostas.q1 && respostas.q2) {
-                let resultadoTexto = "";
-                
-                if (respostas.q1 === 'casual' || respostas.q2 === 'casual') {
-                    resultadoTexto = "👟 Tênis Streetwear Urban ou Sneaker Retro Vibe! Seu estilo é focado na cultura urbana e conforto para o dia todo.";
-                } else if (respostas.q1 === 'urbano' || respostas.q2 === 'urbano') {
-                    resultadoTexto = "🥾 Bota Coturno Casual! Você curte um visual com mais presença, atitude e perfeito para a noite.";
-                } else {
-                    resultadoTexto = "👞 Mocassim Jovem Slim! O estilo minimalista e limpo combina muito mais com a sua vibe prática.";
-                }
-
-                document.getElementById("texto-resultado").innerText = resultadoTexto;
-                document.getElementById("resultado-quiz").style.display = "block";
-            }
+    <style>
+        /* Tudo configurado em um único lugar para não bugar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-    </script>
-</body>
-</html>
+
+        body {
+            background-color: #f4f4f5;
+            color: #18181b;
+        }
+
+        header {
+            background-color: #09090b;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            letter-spacing: 2px;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        .banner {
+            background-color: #18181b;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            color: #a1a1aa;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .titulo-secao {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-left: 5px solid #09090b;
+            padding-left: 10px;
+        }
+
+        /* Design do Quiz */
+        .quiz-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .quiz-pergunta {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .quiz-opcoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-opcoes button {
+            background-color: #f4f4f5;
+            color: #18181b;
+            border: 2px solid #e4e4e7;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .quiz-opcoes button:hover {
+            background-color: #09090b;
+            color: white;
+        }
+
+        .resultado-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            border-radius: 4px;
+        }
+
+        /* Design da Vitrine */
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .produto-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .produto-foto {
+            width: 100%;
+            height: 180px;
+            background-color: #e4e4e7;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7
