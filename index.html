@@ -39,6 +39,7 @@
             text-decoration: none;
             margin-left: 20px;
             font-weight: 500;
+            cursor: pointer;
         }
 
         /* Banner */
@@ -54,7 +55,7 @@
             margin-bottom: 10px;
         }
 
-        /* Container da Vitrine */
+        /* Container Principal */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -75,7 +76,6 @@
             gap: 20px;
         }
 
-        /* Cartão do Produto */
         .produto-card {
             background-color: white;
             border-radius: 8px;
@@ -96,7 +96,6 @@
             object-fit: cover;
         }
 
-        /* Estilo para avisos em texto quando não há foto */
         div.produto-foto {
             display: flex;
             align-items: center;
@@ -119,7 +118,7 @@
             margin-bottom: 12px;
         }
 
-        /* Botões de Ação */
+        /* Botões */
         .botoes-grupo {
             display: flex;
             flex-direction: column;
@@ -150,6 +149,75 @@
             text-transform: uppercase;
         }
 
+        /* ESTILO DA NOVA PÁGINA DE DETALHES */
+        .pagina-detalhes {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: none; /* Começa escondida */
+        }
+
+        .detalhes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .detalhes-foto-bloco {
+            width: 100%;
+            height: 350px;
+            background-color: #e4e4e7;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .detalhes-info h4 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #09090b;
+        }
+
+        .detalhes-info .preco-grande {
+            font-size: 24px;
+            font-weight: bold;
+            color: #22c55e;
+            margin-bottom: 20px;
+        }
+
+        .detalhes-info p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #52525b;
+            margin-bottom: 20px;
+        }
+
+        .tabela-tamanhos {
+            margin-bottom: 25px;
+        }
+
+        .tabela-tamanhos span {
+            display: inline-block;
+            border: 1px solid #d4d4d8;
+            padding: 8px 12px;
+            margin: 4px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .btn-voltar {
+            background-color: #71717a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
         /* Rodapé */
         footer {
             background-color: #09090b;
@@ -166,101 +234,71 @@
     <header>
         <h1>SERGUS</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Produtos</a>
+            <a onclick="irParaHome()">Home</a>
+            <a onclick="irParaHome()">Produtos</a>
             <a href="#">Contato</a>
         </nav>
     </header>
 
-    <section class="banner">
+    <section class="banner" id="banner-site">
         <h2>Estilo Urbano Jovens</h2>
         <p>Encontre os melhores sapatos e tênis streetwear para o seu dia a dia.</p>
     </section>
 
     <main class="container">
-        <h3 class="titulo-secao">Nossa Coleção (6 Modelos)</h3>
         
-        <div class="vitrine">
+        <!-- PÁGINA 1: VITRINE PRINCIPAL -->
+        <div id="secao-vitrine">
+            <h3 class="titulo-secao">Nossa Coleção (6 Modelos)</h3>
             
-            <!-- Calçado 1 (Com sua foto real) -->
-            <div class="produto-card">
-                <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
-                <div class="produto-nome">Tênis Streetwear Urban</div>
-                <div class="produto-preco">R$ 249,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="mostrarInfo('Tênis Streetwear Urban', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium. Ideal para faculdade ou eventos casuais.')">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+            <div class="vitrine">
+                
+                <!-- Calçado 1 -->
+                <div class="produto-card">
+                    <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto" id="img-prod-1">
+                    <div class="produto-nome">Tênis Streetwear Urban</div>
+                    <div class="produto-preco">R$ 249,90</div>
+                    <div class="botoes-grupo">
+                        <button class="btn-detalhes" onclick="verPaginaDetalhes('Tênis Streetwear Urban', 'R$ 249,90', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium. Perfeito para ditar tendência na faculdade ou no rolê urbano aos fins de semana.', 'lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg', true)">Ver Detalhes</button>
+                        <button class="btn-comprar">Comprar</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Calçado 2 -->
-            <div class="produto-card">
-                <div class="produto-foto">Foto da Bota</div>
-                <div class="produto-nome">Bota Coturno Casual</div>
-                <div class="produto-preco">R$ 289,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="mostrarInfo('Bota Coturno Casual', 'Corte em couro sintético ecológico premium, costuras duplas reforçadas e cano médio protetor com forro acolchoado.')">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                <!-- Calçado 2 -->
+                <div class="produto-card">
+                    <div class="produto-foto">Foto da Bota</div>
+                    <div class="produto-nome">Bota Coturno Casual</div>
+                    <div class="produto-preco">R$ 289,90</div>
+                    <div class="botoes-grupo">
+                        <button class="btn-detalhes" onclick="verPaginaDetalhes('Bota Coturno Casual', 'R$ 289,90', 'Corte em couro sintético ecológico de alta qualidade, costuras duplas reforçadas nas bordas e cano médio protetor com revestimento interno acolchoado para uso prolongado.', '', false)">Ver Detalhes</button>
+                        <button class="btn-comprar">Comprar</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Calçado 3 -->
-            <div class="produto-card">
-                <div class="produto-foto">Foto do Mocassim</div>
-                <div class="produto-nome">Mocassim Jovem Slim</div>
-                <div class="produto-preco">R$ 199,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="mostrarInfo('Mocassim Jovem Slim', 'Modelo sem cadarço estilo slip-on. Solado minimalista antiderrapante e costuras artesanais na parte frontal. Máxima praticidade.')">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                <!-- Calçado 3 -->
+                <div class="produto-card">
+                    <div class="produto-foto">Foto do Mocassim</div>
+                    <div class="produto-nome">Mocassim Jovem Slim</div>
+                    <div class="produto-preco">R$ 199,90</div>
+                    <div class="botoes-grupo">
+                        <button class="btn-detalhes" onclick="verPaginaDetalhes('Mocassim Jovem Slim', 'R$ 199,90', 'Modelo prático sem cadarço estilo slip-on. Traz solado minimalista antiderrapante e costuras artesanais na parte frontal, alinhando elegância jovem e conforto.', '', false)">Ver Detalhes</button>
+                        <button class="btn-comprar">Comprar</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Calçado 4 -->
-            <div class="produto-card">
-                <div class="produto-foto">Foto do Tênis Cano Alto</div>
-                <div class="produto-nome">Tênis Cano Alto Retro</div>
-                <div class="produto-preco">R$ 279,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="mostrarInfo('Tênis Cano Alto Retro', 'Visual clássico das quadras de basquete dos anos 90. Tecido em camurça macia com ajuste reforçado no tornozelo.')">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                <!-- Calçado 4 -->
+                <div class="produto-card">
+                    <div class="produto-foto">Foto do Tênis Cano Alto</div>
+                    <div class="produto-nome">Tênis Cano Alto Retro</div>
+                    <div class="produto-preco">R$ 279,90</div>
+                    <div class="botoes-grupo">
+                        <button class="btn-detalhes" onclick="verPaginaDetalhes('Tênis Cano Alto Retro', 'R$ 279,90', 'Visual clássico das icônicas quadras de basquete dos anos 90. Tecido estruturado em camurça macia com cano alto protetor e excelente ajuste anatômico no calcanhar.', '', false)">Ver Detalhes</button>
+                        <button class="btn-comprar">Comprar</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Calçado 5 -->
-            <div class="produto-card">
-                <div class="produto-foto">Foto do Sport Casual</div>
-                <div class="produto-nome">Sneaker Sport Casual</div>
-                <div class="produto-preco">R$ 229,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="mostrarInfo('Sneaker Sport Casual', 'Desenvolvido com tecnologia de amortecimento leve para caminhadas cotidianas e tecido em mesh ventilado que evita o suor.')">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
-                </div>
-            </div>
-
-            <!-- Calçado 6 -->
-            <div class="produto-card">
-                <div class="produto-foto">Foto do Slip-on</div>
-                <div class="produto-nome">Tênis Slip-on Urban</div>
-                <div class="produto-preco">R$ 179,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="mostrarInfo('Tênis Slip-on Urban', 'O modelo mais leve da coleção. Ajuste elástico nas laterais para calce instantâneo e tecido de algodão lavado.')">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Sergus Calçados. Atividade Escolar - Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- INTERAÇÃO JAVASCRIPT -->
-    <script>
-        function mostrarInfo(nomeCalçado, especificacoes) {
-            alert("👟 " + nomeCalçado + "\n\n📋 Detalhes do Produto:\n" + especificacoes);
-        }
-    </script>
-
-</body>
-</html>
+                <!-- Calçado 5 -->
+                <div class="produto-card">
+                    <div class="produto-foto">Foto do Sport Casual</div>
+                    <div class="produto-nome">Sneaker Sport Casual</div>
+                    <div class="produto-preco">R$ 229,90</div>
