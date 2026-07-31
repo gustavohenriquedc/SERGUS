@@ -106,6 +106,12 @@
             background-color: #e4e4e7;
             border-radius: 6px;
             margin-bottom: 15px;
+            display: block;
+            object-fit: cover; /* Evita que a foto do tênis fique esticada ou amassada */
+        }
+
+        /* Estilo temporário para os produtos que ainda não têm imagem com arquivo real */
+        div.produto-foto {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -143,6 +149,7 @@
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
+            transition: background-color 0.2s;
         }
 
         .btn-comprar:hover {
@@ -181,14 +188,16 @@
         <h3 class="titulo-secao">Lançamentos Tendência 2026</h3>
         
         <div class="vitrine">
+            <!-- Produto 1: Atualizado com a sua imagem -->
             <div class="produto-card">
-                <div class="produto-foto">[ Foto do Tênis ]</div>
+                <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Streetwear Urban</div>
                 <div class="produto-desc">Tênis casual masculino com sola alta, super confortável para a faculdade ou rolê.</div>
                 <div class="produto-preco">R$ 249,90</div>
                 <button class="btn-comprar">Comprar</button>
             </div>
 
+            <!-- Produto 2 -->
             <div class="produto-card">
                 <div class="produto-foto">[ Foto da Bota ]</div>
                 <div class="produto-nome">Bota Coturno Casual</div>
@@ -197,6 +206,7 @@
                 <button class="btn-comprar">Comprar</button>
             </div>
 
+            <!-- Produto 3 -->
             <div class="produto-card">
                 <div class="produto-foto">[ Foto do Mocassim ]</div>
                 <div class="produto-nome">Mocassim Jovem Slim</div>
