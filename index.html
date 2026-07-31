@@ -55,23 +55,23 @@
 
         /* Container da Vitrine */
         .container {
-            max-width: 1200px;
+            max-width: 900px; /* Reduzido para os cartões ficarem com um tamanho melhor em 2 colunas */
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* Grade de Produtos */
+        /* Grade de Produtos - Configurada para 2 colunas fixas */
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* Força a exibição em exatamente 2 colunas */
+            gap: 25px;
         }
 
         /* Cartão do Produto */
         .produto-card {
             background-color: white;
             border-radius: 8px;
-            padding: 15px;
+            padding: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
             display: flex;
@@ -84,26 +84,31 @@
             transform: translateY(-3px);
         }
 
+        /* Alinhamento Especial: força o sexto calçado a ir para debaixo da segunda coluna */
+        .ultimo-produto {
+            grid-column: 2;
+        }
+
         .produto-foto {
             width: 100%;
-            height: 180px;
+            height: 240px; /* Aumentado o tamanho da foto para valorizar as imagens locais */
             background-color: #e4e4e7;
             border-radius: 6px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             object-fit: cover;
         }
 
         .produto-nome {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .produto-preco {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #09090b;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         /* Estilos dos Botões */
@@ -117,7 +122,7 @@
             background-color: #09090b;
             color: white;
             border: none;
-            padding: 11px;
+            padding: 12px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
@@ -134,7 +139,7 @@
             background-color: #e4e4e7;
             color: #09090b;
             border: none;
-            padding: 11px;
+            padding: 12px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
@@ -157,22 +162,14 @@
             font-size: 14px;
         }
 
-        /* REGRAS DE RESPONSIVIDADE */
-        @media (max-width: 1024px) {
-            .vitrine { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .vitrine { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .container { margin: 20px auto; }
-        }
-
-        @media (max-width: 480px) {
-            header { flex-direction: column; gap: 15px; text-align: center; }
-            nav { gap: 15px; }
-            nav a { margin-left: 0; font-size: 14px; }
-            .vitrine { grid-template-columns: 1fr; gap: 20px; }
-            .produto-foto { height: 220px; }
+        /* Responsividade para Celulares Pequenos (opcional para não quebrar em telas minúsculas) */
+        @media (max-width: 500px) {
+            .vitrine {
+                grid-template-columns: 1fr; /* Vira 1 coluna no celular para melhor leitura */
+            }
+            .ultimo-produto {
+                grid-column: auto; /* Desfaz o alinhamento no celular */
+            }
         }
     </style>
 </head>
@@ -191,7 +188,7 @@
         
         <div class="vitrine">
             
-            <!-- Calçado 1 (Sua primeira imagem local) -->
+            <!-- Linha 1 - Coluna 1 -->
             <div class="produto-card">
                 <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Streetwear Urban</div>
@@ -202,7 +199,7 @@
                 </div>
             </div>
 
-            <!-- Calçado 2 (bota.coturno.webp) -->
+            <!-- Linha 1 - Coluna 2 -->
             <div class="produto-card">
                 <img src="bota.coturno.webp" alt="Bota Coturno Casual" class="produto-foto">
                 <div class="produto-nome">Bota Coturno Casual</div>
@@ -213,7 +210,7 @@
                 </div>
             </div>
 
-            <!-- Calçado 3 (mocassin.slim.webp) -->
+            <!-- Linha 2 - Coluna 1 -->
             <div class="produto-card">
                 <img src="mocassin.slim.webp" alt="Mocassim Jovem Slim" class="produto-foto">
                 <div class="produto-nome">Mocassim Jovem Slim</div>
@@ -224,7 +221,7 @@
                 </div>
             </div>
 
-            <!-- Calçado 4 (tenis.ca.jfif) -->
+            <!-- Linha 2 - Coluna 2 -->
             <div class="produto-card">
                 <img src="tenis.ca.jfif" alt="Tênis Cano Alto Retro" class="produto-foto">
                 <div class="produto-nome">Tênis Cano Alto Retro</div>
@@ -235,7 +232,7 @@
                 </div>
             </div>
 
-            <!-- Calçado 5 (sneaker.jfif) -->
+            <!-- Linha 3 - Coluna 1 -->
             <div class="produto-card">
                 <img src="sneaker.jfif" alt="Sneaker Sport Casual" class="produto-foto">
                 <div class="produto-nome">Sneaker Sport Casual</div>
@@ -246,8 +243,8 @@
                 </div>
             </div>
 
-            <!-- Calçado 6 (tenis.slip.webp) -->
-            <div class="produto-card">
+            <!-- Linha 3 - Coluna 2 (O sexto calçado posicionado com classe exclusiva) -->
+            <div class="produto-card ultimo-produto">
                 <img src="tenis.slip.webp" alt="Tênis Slip-on Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Slip-on Urban</div>
                 <div class="produto-preco">R$ 179,90</div>
