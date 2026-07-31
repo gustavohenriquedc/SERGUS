@@ -60,10 +60,10 @@
             padding: 0 20px;
         }
 
-        /* Grade de Produtos (Vitrine Responsiva com Grid) */
+        /* Grade de Produtos */
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Padrão de 4 colunas em telas grandes */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
@@ -91,16 +91,6 @@
             border-radius: 6px;
             margin-bottom: 12px;
             object-fit: cover;
-        }
-
-        /* Estilo para avisos em texto quando não há foto */
-        div.produto-foto {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #71717a;
-            font-weight: bold;
-            font-size: 14px;
         }
 
         .produto-nome {
@@ -167,53 +157,22 @@
             font-size: 14px;
         }
 
-        /* ========================================================
-           📱 REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
-           ======================================================== */
-
-        /* Para Monitores menores ou Notebooks (Ajusta para 3 colunas) */
+        /* REGRAS DE RESPONSIVIDADE */
         @media (max-width: 1024px) {
-            .vitrine {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .vitrine { grid-template-columns: repeat(3, 1fr); }
         }
 
-        /* Para Tablets (Ajusta para 2 colunas e reorganiza espaçamentos) */
         @media (max-width: 768px) {
-            .vitrine {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            .container {
-                margin: 20px auto;
-            }
+            .vitrine { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .container { margin: 20px auto; }
         }
 
-        /* Para Celulares (Ajusta para 1 coluna cheia e quebra o menu) */
         @media (max-width: 480px) {
-            header {
-                flex-direction: column; /* Coloca a logo acima do menu */
-                gap: 15px;
-                text-align: center;
-            }
-            
-            nav {
-                gap: 15px;
-            }
-
-            nav a {
-                margin-left: 0; /* Remove margens antigas para alinhar ao centro */
-                font-size: 14px;
-            }
-
-            .vitrine {
-                grid-template-columns: 1fr; /* Um produto embaixo do outro */
-                gap: 20px;
-            }
-
-            .produto-foto {
-                height: 220px; /* Aumenta um pouco a foto no celular para valorizar o produto */
-            }
+            header { flex-direction: column; gap: 15px; text-align: center; }
+            nav { gap: 15px; }
+            nav a { margin-left: 0; font-size: 14px; }
+            .vitrine { grid-template-columns: 1fr; gap: 20px; }
+            .produto-foto { height: 220px; }
         }
     </style>
 </head>
@@ -232,20 +191,20 @@
         
         <div class="vitrine">
             
-            <!-- Calçado 1 (Com sua foto real) -->
+            <!-- Calçado 1 (Sua primeira imagem local) -->
             <div class="produto-card">
                 <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Streetwear Urban</div>
                 <div class="produto-preco">R$ 249,90</div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="verDetalhes('Tênis Streetwear Urban', 'R$ 249,90', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium. Perfeito para o rolê diário.')">Ver Detalhes</button>
+                    <button class="btn-detalhes" onclick="verDetalhes('Tênis Streetwear Urban', 'R$ 249,90', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium.')">Ver Detalhes</button>
                     <button class="btn-comprar" onclick="comprarItem('Tênis Streetwear Urban')">Comprar</button>
                 </div>
             </div>
 
-            <!-- Calçado 2 -->
+            <!-- Calçado 2 (bota.coturno.webp) -->
             <div class="produto-card">
-                <div class="produto-foto">Foto da Bota</div>
+                <img src="bota.coturno.webp" alt="Bota Coturno Casual" class="produto-foto">
                 <div class="produto-nome">Bota Coturno Casual</div>
                 <div class="produto-preco">R$ 289,90</div>
                 <div class="botoes-grupo">
@@ -254,9 +213,9 @@
                 </div>
             </div>
 
-            <!-- Calçado 3 -->
+            <!-- Calçado 3 (mocassin.slim.webp) -->
             <div class="produto-card">
-                <div class="produto-foto">Foto do Mocassim</div>
+                <img src="mocassin.slim.webp" alt="Mocassim Jovem Slim" class="produto-foto">
                 <div class="produto-nome">Mocassim Jovem Slim</div>
                 <div class="produto-preco">R$ 199,90</div>
                 <div class="botoes-grupo">
@@ -265,9 +224,9 @@
                 </div>
             </div>
 
-            <!-- Calçado 4 -->
+            <!-- Calçado 4 (tenis.ca.jfif) -->
             <div class="produto-card">
-                <div class="produto-foto">Foto do Tênis Cano Alto</div>
+                <img src="tenis.ca.jfif" alt="Tênis Cano Alto Retro" class="produto-foto">
                 <div class="produto-nome">Tênis Cano Alto Retro</div>
                 <div class="produto-preco">R$ 279,90</div>
                 <div class="botoes-grupo">
@@ -276,9 +235,9 @@
                 </div>
             </div>
 
-            <!-- Calçado 5 -->
+            <!-- Calçado 5 (sneaker.jfif) -->
             <div class="produto-card">
-                <div class="produto-foto">Foto do Sport Casual</div>
+                <img src="sneaker.jfif" alt="Sneaker Sport Casual" class="produto-foto">
                 <div class="produto-nome">Sneaker Sport Casual</div>
                 <div class="produto-preco">R$ 229,90</div>
                 <div class="botoes-grupo">
@@ -287,8 +246,33 @@
                 </div>
             </div>
 
-            <!-- Calçado 6 -->
+            <!-- Calçado 6 (tenis.slip.webp) -->
             <div class="produto-card">
-                <div class="produto-foto">Foto do Slip-on</div>
+                <img src="tenis.slip.webp" alt="Tênis Slip-on Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Slip-on Urban</div>
                 <div class="produto-preco">R$ 179,90</div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="verDetalhes('Tênis Slip-on Urban', 'R$ 179,90', 'O modelo mais leve e maleável da coleção. Conta com eficientes elásticos de ajuste nas laterais para calce rápido.')">Ver Detalhes</button>
+                    <button class="btn-comprar" onclick="comprarItem('Tênis Slip-on Urban')">Comprar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sergus Calçados. Atividade Escolar - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function verDetalhes(nome, preco, info) {
+            alert(`👟 ${nome}\n💰 Preço: ${preco}\n\n📋 Informações:\n${info}`);
+        }
+
+        function comprarItem(nome) {
+            alert(`O produto "${nome}" foi adicionado com sucesso!`);
+        }
+    </script>
+
+</body>
+</html>
