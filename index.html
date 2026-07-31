@@ -11,14 +11,66 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.2s ease-in-out;
         }
 
         body {
             background-color: #f4f4f5;
             color: #18181b;
+            overflow-x: hidden;
         }
 
-        /* Menu de Navegação */
+        /* 1. CAPA DE ENTRADA DO SITE (HERO LANDING) */
+        .capa-site {
+            background-color: #09090b;
+            color: white;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .capa-site h2 {
+            font-size: 56px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .capa-site p {
+            color: #a1a1aa;
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+        }
+
+        .btn-explorar {
+            background-color: white;
+            color: #09090b;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+        }
+
+        .btn-explorar:hover {
+            background-color: #e4e4e7;
+            transform: scale(1.05);
+        }
+
+        /* 2. MENU DE NAVEGAÇÃO CORPORATIVO */
         header {
             background-color: #09090b;
             color: white;
@@ -26,78 +78,83 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-size: 24px;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 25px;
             font-weight: 500;
             cursor: pointer;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         nav a:hover {
             color: #a1a1aa;
         }
 
-        /* Banner */
-        .banner {
-            background-color: #18181b;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .banner h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        /* Container Principal */
+        /* Container Principal das Páginas */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 50px auto;
             padding: 0 20px;
         }
 
         .titulo-secao {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 26px;
+            margin-bottom: 30px;
             border-left: 5px solid #09090b;
-            padding-left: 10px;
+            padding-left: 12px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* PÁGINA 1: VITRINE PRINCIPAL */
+        /* 3. PÁGINA: VITRINE DE PRODUTOS */
+        #secao-vitrine {
+            display: none; /* Inicia oculta para mostrar apenas a capa */
+        }
+
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .produto-card {
             background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
         .produto-foto {
             width: 100%;
-            height: 180px;
+            height: 200px;
             background-color: #e4e4e7;
-            border-radius: 6px;
-            margin-bottom: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             object-fit: cover;
         }
 
@@ -111,103 +168,114 @@
         }
 
         .produto-nome {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            color: #09090b;
         }
 
         .produto-preco {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #09090b;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
-        /* Botões Gerais */
+        /* Grupos de Botões */
         .botoes-grupo {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn-comprar {
             background-color: #09090b;
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-comprar:hover {
+            background-color: #27272a;
         }
 
         .btn-detalhes {
             background-color: #e4e4e7;
             color: #09090b;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* PÁGINA 2: DETALHES INTERNOS */
+        .btn-detalhes:hover {
+            background-color: #d4d4d8;
+        }
+
+        /* 4. PÁGINA: DETALHES DO PRODUTO */
         .pagina-detalhes {
             background-color: white;
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             display: none;
         }
 
         .detalhes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
             margin-top: 20px;
         }
 
         .detalhes-foto-bloco {
             width: 100%;
-            height: 350px;
+            height: 400px;
             background-color: #e4e4e7;
             border-radius: 8px;
             object-fit: cover;
         }
 
         .detalhes-info h4 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 12px;
             color: #09090b;
         }
 
         .detalhes-info .preco-grande {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
-            color: #18181b;
-            margin-bottom: 20px;
+            color: #09090b;
+            margin-bottom: 25px;
         }
 
         .detalhes-info p {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #52525b;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .tabela-tamanhos {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .tabela-tamanhos span {
             display: inline-block;
             border: 1px solid #d4d4d8;
-            padding: 8px 12px;
+            padding: 8px 14px;
             margin: 4px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 500;
         }
 
@@ -216,53 +284,55 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* PÁGINA 3: CENTRAL DE CONTATO */
+        /* 5. PÁGINA: CENTRAL DE CONTATO */
         .pagina-contato {
             display: none;
             background-color: white;
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
 
         .contato-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             margin-top: 20px;
         }
 
         .contato-info p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-size: 16px;
             color: #52525b;
+            line-height: 1.6;
         }
 
         .canais-rapidos {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .btn-canal {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 14px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
             color: white;
             text-transform: uppercase;
             font-size: 14px;
+            letter-spacing: 0.5px;
         }
 
         .btn-whatsapp { background-color: #25d366; }
@@ -271,23 +341,28 @@
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
         }
 
         .form-grupo label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-size: 14px;
             font-weight: 500;
         }
 
         .form-grupo input, .form-grupo textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #e4e4e7;
             border-radius: 6px;
             font-size: 15px;
             outline: none;
+            background-color: #fecfef5;
+        }
+
+        .form-grupo input:focus, .form-grupo textarea:focus {
+            border-color: #09090b;
         }
 
         /* Rodapé */
@@ -295,56 +370,15 @@
             background-color: #09090b;
             color: #71717a;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 25px;
+            margin-top: 60px;
             font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>SERGUS</h1>
-        <nav>
-            <a onclick="abrirHome()">Home</a>
-            <a onclick="abrirHome()">Produtos</a>
-            <a onclick="abrirContato()">Contato</a>
-        </nav>
-    </header>
-
-    <section class="banner">
-        <h2>Estilo Urbano Jovens</h2>
-        <p>Encontre os melhores sapatos e tênis streetwear para o seu dia a dia.</p>
-    </section>
-
-    <main class="container">
-        
-        <!-- PÁGINA 1: VITRINE PRINCIPAL -->
-        <div id="secao-vitrine">
-            <h3 class="titulo-secao">Nossa Coleção (6 Modelos)</h3>
-            
-            <div class="vitrine">
-                
-                <!-- Calçado 1 -->
-                <div class="produto-card">
-                    <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
-                    <div class="produto-nome">Tênis Streetwear Urban</div>
-                    <div class="produto-preco">R$ 249,90</div>
-                    <div class="botoes-grupo">
-                        <button class="btn-detalhes" onclick="abrirDetalhes('Tênis Streetwear Urban', 'R$ 249,90', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium. Perfeito para ditar tendência na faculdade ou no rolê urbano aos fins de semana.', 'lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg', true)">Ver Detalhes</button>
-                        <button class="btn-comprar">Comprar</button>
-                    </div>
-                </div>
-
-                <!-- Calçado 2 -->
-                <div class="produto-card">
-                    <div class="produto-foto">Foto da Bota</div>
-                    <div class="produto-nome">Bota Coturno Casual</div>
-                    <div class="produto-preco">R$ 289,90</div>
-                    <div class="botoes-grupo">
-                        <button class="btn-detalhes" onclick="abrirDetalhes('Bota Coturno Casual', 'R$ 289,90', 'Corte em couro sintético ecológico de alta qualidade, costuras duplas reforçadas nas bordas e cano médio protetor com revestimento interno acolchoado para uso prolongado.', '', false)">Ver Detalhes</button>
-                        <button class="btn-comprar">Comprar</button>
-                    </div>
-                </div>
-
-                <!-- Calçado 3 -->
+    <!-- 1. SEÇÃO DE CAPA EM TELA CHEIA (HERO LANDING) -->
+    <div id="capa-boas-vindas" class="capa-site">
+        <h2>SERGUS</h2>
+        <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés. Descubra o verdadeiro conceito de streetwear urbano.</p>
