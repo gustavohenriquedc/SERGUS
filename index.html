@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
     <style>
-        /* Configurações Gerais - Estilo Jovem e Urbano */
+        /* Configurações Gerais */
         * {
             margin: 0;
             padding: 0;
@@ -18,7 +18,7 @@
             color: #18181b;
         }
 
-        /* Cabeçalho / Menu */
+        /* Menu */
         header {
             background-color: #09090b;
             color: white;
@@ -26,14 +26,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         header h1 {
             letter-spacing: 2px;
-            font-size: 28px;
+            font-size: 24px;
             text-transform: uppercase;
         }
 
@@ -44,11 +41,7 @@
             font-weight: 500;
         }
 
-        nav a:hover {
-            color: #a1a1aa;
-        }
-
-        /* Banner Principal */
+        /* Banner */
         .banner {
             background-color: #18181b;
             color: white;
@@ -57,16 +50,11 @@
         }
 
         .banner h2 {
-            font-size: 36px;
+            font-size: 32px;
             margin-bottom: 10px;
         }
 
-        .banner p {
-            color: #a1a1aa;
-            font-size: 18px;
-        }
-
-        /* Vitrine de Produtos */
+        /* Container da Vitrine */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -80,9 +68,10 @@
             padding-left: 10px;
         }
 
+        /* Grade de Produtos (Vitrine) */
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
@@ -93,60 +82,50 @@
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .produto-card:hover {
-            transform: translateY(-5px);
         }
 
         .produto-foto {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background-color: #e4e4e7;
             border-radius: 6px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            object-fit: cover;
+        }
+
+        /* Estilo para avisos em texto quando não há foto */
+        div.produto-foto {
             display: flex;
             align-items: center;
             justify-content: center;
             color: #71717a;
             font-weight: bold;
+            font-size: 14px;
         }
 
         .produto-nome {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .produto-desc {
-            font-size: 14px;
-            color: #71717a;
-            margin-bottom: 12px;
-            height: 40px;
+            margin-bottom: 6px;
         }
 
         .produto-preco {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #09090b;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .btn-comprar {
             background-color: #09090b;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
-        }
-
-        .btn-comprar:hover {
-            background-color: #27272a;
         }
 
         /* Rodapé */
@@ -166,44 +145,69 @@
         <h1>SERGUS</h1>
         <nav>
             <a href="#">Home</a>
-            <a href="#">Sneakers</a>
-            <a href="#">Botas</a>
+            <a href="#">Produtos</a>
             <a href="#">Contato</a>
         </nav>
     </header>
 
     <section class="banner">
         <h2>Estilo Urbano Jovens</h2>
-        <p>Encontre os melhores sapatos masculinos e tênis streetwear para o seu dia a dia.</p>
+        <p>Encontre os melhores sapatos e tênis streetwear para o seu dia a dia.</p>
     </section>
 
     <main class="container">
-        <h3 class="titulo-secao">Lançamentos Tendência 2026</h3>
+        <h3 class="titulo-secao">Nossa Coleção (6 Modelos)</h3>
         
         <div class="vitrine">
+            
+            <!-- Calçado 1 (Com sua foto real) -->
             <div class="produto-card">
-                <div class="produto-foto">[ Foto do Tênis ]</div>
+                <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Streetwear Urban</div>
-                <div class="produto-desc">Tênis casual masculino com sola alta, super confortável para a faculdade ou rolê.</div>
                 <div class="produto-preco">R$ 249,90</div>
                 <button class="btn-comprar">Comprar</button>
             </div>
 
+            <!-- Calçado 2 -->
             <div class="produto-card">
-                <div class="produto-foto">[ Foto da Bota ]</div>
+                <div class="produto-foto">Foto da Bota</div>
                 <div class="produto-nome">Bota Coturno Casual</div>
-                <div class="produto-desc">Bota masculina estilo jovem em couro sintético preto, ideal para um visual moderno.</div>
                 <div class="produto-preco">R$ 289,90</div>
                 <button class="btn-comprar">Comprar</button>
             </div>
 
+            <!-- Calçado 3 -->
             <div class="produto-card">
-                <div class="produto-foto">[ Foto do Mocassim ]</div>
+                <div class="produto-foto">Foto do Mocassim</div>
                 <div class="produto-nome">Mocassim Jovem Slim</div>
-                <div class="produto-desc">Sapato casual masculino sem cadarço, estilo e praticidade no visual minimalista.</div>
                 <div class="produto-preco">R$ 199,90</div>
                 <button class="btn-comprar">Comprar</button>
             </div>
+
+            <!-- Calçado 4 -->
+            <div class="produto-card">
+                <div class="produto-foto">Foto do Tênis Cano Alto</div>
+                <div class="produto-nome">Tênis Cano Alto Retro</div>
+                <div class="produto-preco">R$ 279,90</div>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+
+            <!-- Calçado 5 -->
+            <div class="produto-card">
+                <div class="produto-foto">Foto do Sport Casual</div>
+                <div class="produto-nome">Sneaker Sport Casual</div>
+                <div class="produto-preco">R$ 229,90</div>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+
+            <!-- Calçado 6 -->
+            <div class="produto-card">
+                <div class="produto-foto">Foto do Slip-on</div>
+                <div class="produto-nome">Tênis Slip-on Urban</div>
+                <div class="produto-preco">R$ 179,90</div>
+                <button class="btn-comprar">Comprar</button>
+            </div>
+
         </div>
     </main>
 
