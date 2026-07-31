@@ -18,7 +18,7 @@
             color: #18181b;
         }
 
-        /* Menu */
+        /* Menu / Cabeçalho */
         header {
             background-color: #09090b;
             color: white;
@@ -26,6 +26,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header h1 {
@@ -34,11 +37,20 @@
             text-transform: uppercase;
         }
 
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
             font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #a1a1aa;
         }
 
         /* Container da Vitrine */
@@ -48,10 +60,10 @@
             padding: 0 20px;
         }
 
-        /* Grade de Produtos (Vitrine) */
+        /* Grade de Produtos (Vitrine Responsiva com Grid) */
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* Padrão de 4 colunas em telas grandes */
             gap: 20px;
         }
 
@@ -65,6 +77,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.2s;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-3px);
         }
 
         .produto-foto {
@@ -110,12 +127,13 @@
             background-color: #09090b;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 11px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 13px;
         }
 
         .btn-comprar:hover {
@@ -126,12 +144,13 @@
             background-color: #e4e4e7;
             color: #09090b;
             border: none;
-            padding: 10px;
+            padding: 11px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 13px;
         }
 
         .btn-detalhes:hover {
@@ -146,6 +165,55 @@
             padding: 20px;
             margin-top: 40px;
             font-size: 14px;
+        }
+
+        /* ========================================================
+           📱 REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
+           ======================================================== */
+
+        /* Para Monitores menores ou Notebooks (Ajusta para 3 colunas) */
+        @media (max-width: 1024px) {
+            .vitrine {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Para Tablets (Ajusta para 2 colunas e reorganiza espaçamentos) */
+        @media (max-width: 768px) {
+            .vitrine {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .container {
+                margin: 20px auto;
+            }
+        }
+
+        /* Para Celulares (Ajusta para 1 coluna cheia e quebra o menu) */
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column; /* Coloca a logo acima do menu */
+                gap: 15px;
+                text-align: center;
+            }
+            
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 0; /* Remove margens antigas para alinhar ao centro */
+                font-size: 14px;
+            }
+
+            .vitrine {
+                grid-template-columns: 1fr; /* Um produto embaixo do outro */
+                gap: 20px;
+            }
+
+            .produto-foto {
+                height: 220px; /* Aumenta um pouco a foto no celular para valorizar o produto */
+            }
         }
     </style>
 </head>
@@ -224,29 +292,3 @@
                 <div class="produto-foto">Foto do Slip-on</div>
                 <div class="produto-nome">Tênis Slip-on Urban</div>
                 <div class="produto-preco">R$ 179,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="verDetalhes('Tênis Slip-on Urban', 'R$ 179,90', 'O modelo mais leve e maleável da coleção. Conta com eficientes elásticos de ajuste nas laterais para calce rápido.')">Ver Detalhes</button>
-                    <button class="btn-comprar" onclick="comprarItem('Tênis Slip-on Urban')">Comprar</button>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Sergus Calçados. Atividade Escolar - Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- LÓGICA JAVASCRIPT INICIAL -->
-    <script>
-        function verDetalhes(nome, preco, info) {
-            alert(`👟 ${nome}\n💰 Preço: ${preco}\n\n📋 Informações:\n${info}`);
-        }
-
-        function comprarItem(nome) {
-            alert(`O produto "${nome}" foi adicionado com sucesso!`);
-        }
-    </script>
-
-</body>
-</html>
