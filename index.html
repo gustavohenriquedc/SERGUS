@@ -82,6 +82,9 @@
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .produto-foto {
@@ -116,9 +119,28 @@
             margin-bottom: 12px;
         }
 
+        /* Botões de Ação */
+        .botoes-grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
         .btn-comprar {
             background-color: #09090b;
             color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-detalhes {
+            background-color: #e4e4e7;
+            color: #09090b;
             border: none;
             padding: 10px;
             border-radius: 5px;
@@ -165,7 +187,10 @@
                 <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Streetwear Urban</div>
                 <div class="produto-preco">R$ 249,90</div>
-                <button class="btn-comprar">Comprar</button>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="mostrarInfo('Tênis Streetwear Urban', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium. Ideal para faculdade ou eventos casuais.')">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
             </div>
 
             <!-- Calçado 2 -->
@@ -173,7 +198,10 @@
                 <div class="produto-foto">Foto da Bota</div>
                 <div class="produto-nome">Bota Coturno Casual</div>
                 <div class="produto-preco">R$ 289,90</div>
-                <button class="btn-comprar">Comprar</button>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="mostrarInfo('Bota Coturno Casual', 'Corte em couro sintético ecológico premium, costuras duplas reforçadas e cano médio protetor com forro acolchoado.')">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
             </div>
 
             <!-- Calçado 3 -->
@@ -181,7 +209,10 @@
                 <div class="produto-foto">Foto do Mocassim</div>
                 <div class="produto-nome">Mocassim Jovem Slim</div>
                 <div class="produto-preco">R$ 199,90</div>
-                <button class="btn-comprar">Comprar</button>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="mostrarInfo('Mocassim Jovem Slim', 'Modelo sem cadarço estilo slip-on. Solado minimalista antiderrapante e costuras artesanais na parte frontal. Máxima praticidade.')">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
             </div>
 
             <!-- Calçado 4 -->
@@ -189,7 +220,10 @@
                 <div class="produto-foto">Foto do Tênis Cano Alto</div>
                 <div class="produto-nome">Tênis Cano Alto Retro</div>
                 <div class="produto-preco">R$ 279,90</div>
-                <button class="btn-comprar">Comprar</button>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="mostrarInfo('Tênis Cano Alto Retro', 'Visual clássico das quadras de basquete dos anos 90. Tecido em camurça macia com ajuste reforçado no tornozelo.')">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
             </div>
 
             <!-- Calçado 5 -->
@@ -197,7 +231,10 @@
                 <div class="produto-foto">Foto do Sport Casual</div>
                 <div class="produto-nome">Sneaker Sport Casual</div>
                 <div class="produto-preco">R$ 229,90</div>
-                <button class="btn-comprar">Comprar</button>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="mostrarInfo('Sneaker Sport Casual', 'Desenvolvido com tecnologia de amortecimento leve para caminhadas cotidianas e tecido em mesh ventilado que evita o suor.')">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
             </div>
 
             <!-- Calçado 6 -->
@@ -205,7 +242,10 @@
                 <div class="produto-foto">Foto do Slip-on</div>
                 <div class="produto-nome">Tênis Slip-on Urban</div>
                 <div class="produto-preco">R$ 179,90</div>
-                <button class="btn-comprar">Comprar</button>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes" onclick="mostrarInfo('Tênis Slip-on Urban', 'O modelo mais leve da coleção. Ajuste elástico nas laterais para calce instantâneo e tecido de algodão lavado.')">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
             </div>
 
         </div>
@@ -214,6 +254,13 @@
     <footer>
         <p>&copy; 2026 Sergus Calçados. Atividade Escolar - Todos os direitos reservados.</p>
     </footer>
+
+    <!-- INTERAÇÃO JAVASCRIPT -->
+    <script>
+        function mostrarInfo(nomeCalçado, especificacoes) {
+            alert("👟 " + nomeCalçado + "\n\n📋 Detalhes do Produto:\n" + especificacoes);
+        }
+    </script>
 
 </body>
 </html>
