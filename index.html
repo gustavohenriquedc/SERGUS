@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
     <style>
-        /* Configurações Gerais - Estilo Jovem e Urbano */
+        /* 1. CONFIGURAÇÕES GERAIS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -18,7 +19,7 @@
             color: #18181b;
         }
 
-        /* Cabeçalho / Menu */
+        /* 2. SEÇÃO 1: CABEÇALHO E MENU (RESPONSIVO) */
         header {
             background-color: #09090b;
             color: white;
@@ -29,126 +30,160 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         header h1 {
             letter-spacing: 2px;
-            font-size: 28px;
+            font-size: 24px;
             text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
             font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
         }
 
         nav a:hover {
             color: #a1a1aa;
         }
 
-        /* Banner Principal */
+        .carrinho-status {
+            background-color: #27272a;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        #contador-carrinho {
+            color: #22c55e;
+        }
+
+        /* 3. SEÇÃO 2: BANNER PRINCIPAL */
         .banner {
             background-color: #18181b;
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         .banner h2 {
             font-size: 36px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .banner p {
             color: #a1a1aa;
             font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Vitrine de Produtos */
+        /* LAYOUT PADRÃO DOS CONTAINERS */
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
         .titulo-secao {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             border-left: 5px solid #09090b;
             padding-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
+        /* 4. SEÇÃO 3: VITRINE DE PRODUTOS */
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        /* Cartão do Produto */
         .produto-card {
             background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             text-align: center;
-            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .produto-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
         .produto-foto {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background-color: #e4e4e7;
-            border-radius: 6px;
+            border-radius: 8px;
             margin-bottom: 15px;
-            display: block;
-            object-fit: cover; /* Evita que a foto do tênis fique esticada ou amassada */
+            object-fit: cover;
         }
 
-        /* Estilo temporário para os produtos que ainda não têm imagem com arquivo real */
+        /* Estilo para itens ainda sem imagem real */
         div.produto-foto {
             display: flex;
             align-items: center;
             justify-content: center;
             color: #71717a;
             font-weight: bold;
+            font-size: 14px;
         }
 
         .produto-nome {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 8px;
+            color: #09090b;
         }
 
         .produto-desc {
             font-size: 14px;
             color: #71717a;
-            margin-bottom: 12px;
-            height: 40px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            height: 42px;
+            overflow: hidden;
         }
 
         .produto-preco {
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 22px;
+            font-weight: 700;
             color: #09090b;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .btn-comprar {
             background-color: #09090b;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: background-color 0.2s;
         }
 
@@ -156,70 +191,172 @@
             background-color: #27272a;
         }
 
-        /* Rodapé */
+        /* 5. SEÇÃO 4: SOBRE A MARCA */
+        .sobre {
+            background-color: white;
+            padding: 60px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .sobre p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #52525b;
+            max-width: 800px;
+        }
+
+        /* 6. SEÇÃO 5: CONTATO E FORMULÁRIO */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contato-info p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #52525b;
+        }
+
+        .contato-info strong {
+            color: #09090b;
+        }
+
+        form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .form-grupo {
+            margin-bottom: 15px;
+        }
+
+        .form-grupo label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #27272a;
+        }
+
+        .form-grupo input, .form-grupo textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #fecfef5;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-grupo input:focus, .form-grupo textarea:focus {
+            border-color: #09090b;
+        }
+
+        .btn-enviar {
+            background-color: #09090b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-enviar:hover {
+            background-color: #27272a;
+        }
+
+        /* 7. RODAPÉ */
         footer {
             background-color: #09090b;
             color: #71717a;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 25px 20px;
+            margin-top: 60px;
             font-size: 14px;
+            border-top: 1px solid #27272a;
+        }
+
+        /* 8. ADAPTAÇÃO RESPONSIVA (CELULARES E TABLETS) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .banner h2 {
+                font-size: 28px;
+            }
+
+            .banner p {
+                font-size: 16px;
+            }
+
+            .container {
+                margin: 40px auto;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- SEÇÃO 1: CABEÇALHO / MENU -->
     <header>
         <h1>SERGUS</h1>
         <nav>
             <a href="#">Home</a>
-            <a href="#">Sneakers</a>
-            <a href="#">Botas</a>
-            <a href="#">Contato</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <span class="carrinho-status">🛒 Carrinho: <span id="contador-carrinho">0</span></span>
         </nav>
     </header>
 
+    <!-- SEÇÃO 2: BANNER PRINCIPAL -->
     <section class="banner">
-        <h2>Estilo Urbano Jovens</h2>
-        <p>Encontre os melhores sapatos masculinos e tênis streetwear para o seu dia a dia.</p>
+        <h2>Estilo Urbano de Verdade</h2>
+        <p>Encontre os melhores sapatos masculinos e tênis streetwear para ditar a tendência no seu dia a dia.</p>
     </section>
 
     <main class="container">
-        <h3 class="titulo-secao">Lançamentos Tendência 2026</h3>
         
-        <div class="vitrine">
-            <!-- Produto 1: Atualizado com a sua imagem -->
-            <div class="produto-card">
-                <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
-                <div class="produto-nome">Tênis Streetwear Urban</div>
-                <div class="produto-desc">Tênis casual masculino com sola alta, super confortável para a faculdade ou rolê.</div>
-                <div class="produto-preco">R$ 249,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
+        <!-- SEÇÃO 3: VITRINE DE PRODUTOS -->
+        <section id="produtos" style="margin-bottom: 60px;">
+            <h3 class="titulo-secao">Lançamentos Tendência 2026</h3>
+            <div class="vitrine">
+                
+                <!-- Produto 1: Com a sua imagem inserida -->
+                <div class="produto-card">
+                    <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
+                    <div>
+                        <div class="produto-nome">Tênis Streetwear Urban</div>
+                        <div class="produto-desc">Tênis casual masculino com sola alta, super confortável para a faculdade ou rolê.</div>
+                    </div>
+                    <div>
+                        <div class="produto-preco">R$ 249,90</div>
+                        <button class="btn-comprar" onclick="adicionarAoCarrinho('Tênis Streetwear Urban')">Comprar</button>
+                    </div>
+                </div>
 
-            <!-- Produto 2 -->
-            <div class="produto-card">
-                <div class="produto-foto">[ Foto da Bota ]</div>
-                <div class="produto-nome">Bota Coturno Casual</div>
-                <div class="produto-desc">Bota masculina estilo jovem em couro sintético preto, ideal para um visual moderno.</div>
-                <div class="produto-preco">R$ 289,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
-
-            <!-- Produto 3 -->
-            <div class="produto-card">
-                <div class="produto-foto">[ Foto do Mocassim ]</div>
-                <div class="produto-nome">Mocassim Jovem Slim</div>
-                <div class="produto-desc">Sapato casual masculino sem cadarço, estilo e praticidade no visual minimalista.</div>
-                <div class="produto-preco">R$ 199,90</div>
-                <button class="btn-comprar">Comprar</button>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Sergus Calçados. Atividade Escolar - Todos os direitos reservados.</p>
-    </footer>
-
-</body>
-</html>
+                <!-- Produto 2 -->
+                <div class="produto-card">
+                    <div class="produto-foto">Imagem da Bota</div>
+                    <div>
+                        <div class="produto-nome">Bota Coturno Casual</div>
+                        <div class="produto-desc">Bota masculina estilo jovem em couro sintético preto, ideal para um visual moderno.</div>
+                    </div>
+                    <div>
