@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
-    <!-- Biblioteca de Ícones (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         * {
             margin: 0;
@@ -21,7 +19,6 @@
             color: #18181b;
         }
 
-        /* TOP BANNER DE ANÚNCIOS */
         .top-banner {
             background-color: #18181b;
             color: #f4f4f5;
@@ -29,14 +26,8 @@
             text-align: center;
             padding: 8px 15px;
             font-weight: 500;
-            letter-spacing: 0.5px;
         }
 
-        .top-banner strong {
-            color: #38bdf8;
-        }
-
-        /* HERO LANDING COM OVERLAY */
         .capa-container {
             background: linear-gradient(rgba(9, 9, 11, 0.75), rgba(9, 9, 11, 0.75)), 
                         url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1600') center/cover no-repeat;
@@ -63,7 +54,6 @@
             font-size: 18px;
             max-width: 600px;
             margin-bottom: 35px;
-            line-height: 1.6;
         }
 
         .btn-explorar {
@@ -80,12 +70,6 @@
             transition: all 0.3s ease;
         }
 
-        .btn-explorar:hover {
-            background-color: #e4e4e7;
-            transform: scale(1.05);
-        }
-
-        /* HEADER FIXO COM ÍCONES */
         header {
             background-color: #09090b;
             color: white;
@@ -96,41 +80,13 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #27272a;
         }
 
-        header h1 {
-            letter-spacing: 2px;
-            font-size: 24px;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: #a1a1aa;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-            font-size: 18px;
-        }
-
-        .header-icons a {
-            color: white;
-            text-decoration: none;
-            position: relative;
-        }
+        header h1 { letter-spacing: 2px; font-size: 24px; }
+        nav { display: flex; gap: 25px; }
+        nav a { color: white; text-decoration: none; font-weight: 500; }
+        .header-icons { display: flex; gap: 20px; font-size: 18px; }
+        .header-icons a { color: white; text-decoration: none; position: relative; }
 
         .carrinho-contador {
             position: absolute;
@@ -144,7 +100,6 @@
             border-radius: 50%;
         }
 
-        /* VITRINE DE PRODUTOS */
         .container {
             max-width: 1100px;
             margin: 60px auto;
@@ -165,13 +120,10 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
 
-        .produto-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
+        .produto-card:hover { transform: translateY(-5px); }
 
         .produto-imagem-wrapper {
             position: relative;
@@ -194,63 +146,24 @@
             z-index: 2;
         }
 
-        .badge-tag.desconto {
-            background-color: #dc2626;
-        }
+        .badge-tag.desconto { background-color: #dc2626; }
 
         .produto-foto {
             width: 100%;
-            height: 240px;
+            height: 220px;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .produto-imagem-wrapper:hover .produto-foto {
-            transform: scale(1.08);
-        }
+        .produto-imagem-wrapper:hover .produto-foto { transform: scale(1.08); }
+        .produto-avaliacao { color: #f59e0b; font-size: 13px; margin-bottom: 6px; }
+        .qtd-avaliacoes { color: #71717a; font-size: 12px; }
+        .produto-nome { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+        .produto-preco-box { margin-bottom: 15px; }
+        .produto-preco { font-size: 19px; font-weight: bold; color: #09090b; }
+        .preco-antigo { font-size: 13px; color: #a1a1aa; text-decoration: line-through; margin-left: 8px; }
 
-        .produto-avaliacao {
-            color: #f59e0b;
-            font-size: 13px;
-            margin-bottom: 6px;
-        }
-
-        .qtd-avaliacoes {
-            color: #71717a;
-            font-size: 12px;
-            margin-left: 4px;
-        }
-
-        .produto-nome {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .produto-preco-box {
-            margin-bottom: 15px;
-        }
-
-        .produto-preco {
-            font-size: 19px;
-            font-weight: bold;
-            color: #09090b;
-        }
-
-        .preco-antigo {
-            font-size: 13px;
-            color: #a1a1aa;
-            text-decoration: line-through;
-            margin-left: 8px;
-            font-weight: normal;
-        }
-
-        .botoes-grupo {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
+        .botoes-grupo { display: flex; flex-direction: column; gap: 8px; }
         .btn-comprar, .btn-detalhes {
             border: none;
             padding: 10px;
@@ -264,29 +177,11 @@
             justify-content: center;
             align-items: center;
             gap: 8px;
-            transition: background-color 0.2s;
         }
 
-        .btn-comprar {
-            background-color: #09090b;
-            color: white;
-        }
+        .btn-comprar { background-color: #09090b; color: white; }
+        .btn-detalhes { background-color: #f4f4f5; color: #09090b; border: 1px solid #e4e4e7; }
 
-        .btn-comprar:hover {
-            background-color: #27272a;
-        }
-
-        .btn-detalhes {
-            background-color: #f4f4f5;
-            color: #09090b;
-            border: 1px solid #e4e4e7;
-        }
-
-        .btn-detalhes:hover {
-            background-color: #e4e4e7;
-        }
-
-        /* RODAPÉ PROFISSIONAL (FOOTER) */
         footer {
             background-color: #09090b;
             color: #a1a1aa;
@@ -303,74 +198,16 @@
             margin-bottom: 40px;
         }
 
-        .footer-col h4 {
-            color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .footer-col h4 { color: white; font-size: 16px; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #a1a1aa; text-decoration: none; }
 
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            color: #a1a1aa;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 14px;
-        }
-
-        .footer-col ul li a:hover {
-            color: white;
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .newsletter-form input {
-            padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #27272a;
-            background-color: #18181b;
-            color: white;
-            outline: none;
-        }
-
-        .newsletter-form button {
-            padding: 12px;
-            background-color: white;
-            color: #09090b;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .redes-sociais, .pagamentos {
-            display: flex;
-            gap: 15px;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-
-        .redes-sociais a {
-            color: #a1a1aa;
-            transition: color 0.2s;
-        }
-
-        .redes-sociais a:hover {
-            color: white;
-        }
+        .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+        .newsletter-form input { padding: 12px; border-radius: 4px; border: 1px solid #27272a; background-color: #18181b; color: white; }
+        .newsletter-form button { padding: 12px; background-color: white; color: #09090b; font-weight: bold; border: none; border-radius: 4px; cursor: pointer; }
+        .redes-sociais, .pagamentos { display: flex; gap: 15px; font-size: 20px; margin-top: 10px; }
+        .redes-sociais a { color: #a1a1aa; }
 
         .footer-bottom {
             max-width: 1100px;
@@ -381,33 +218,22 @@
             font-size: 13px;
         }
 
-        @media (max-width: 900px) {
-            .vitrine { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .vitrine { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            header { padding: 15px 20px; }
-            .capa-container h2 { font-size: 40px; }
-        }
+        @media (max-width: 900px) { .vitrine { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .vitrine, .footer-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- TOP BANNER -->
     <div class="top-banner">
         <i class="fa-solid fa-truck-fast"></i> Frete Grátis para todo o Brasil em compras acima de <strong>R$ 299</strong>
     </div>
 
-    <!-- SEÇÃO HERO DA CAPA -->
     <section class="capa-container">
         <h2>Sergus</h2>
-        <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés. Descubra a nova coleção urbana.</p>
+        <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés.</p>
         <button class="btn-explorar" onclick="document.getElementById('vitrine-loja').scrollIntoView();">Explorar Coleção</button>
     </section>
 
-    <!-- HEADER / MENU PRINCIPAL -->
     <header>
         <h1>SERGUS</h1>
         <nav>
@@ -418,14 +244,10 @@
         <div class="header-icons">
             <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a href="#"><i class="fa-regular fa-user"></i></a>
-            <a href="#">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span class="carrinho-contador">2</span>
-            </a>
+            <a href="#"><i class="fa-solid fa-bag-shopping"></i><span class="carrinho-contador">2</span></a>
         </div>
     </header>
 
-    <!-- CONTAINER DA VITRINE COM 12 PRODUTOS -->
     <main class="container" id="vitrine-loja">
         <div class="vitrine">
             
@@ -436,14 +258,9 @@
                     <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span class="qtd-avaliacoes">(48)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(48)</span></div>
                     <div class="produto-nome">Tênis Streetwear Urban</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 249,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 249,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -458,15 +275,9 @@
                     <img src="bota.coturno.webp" alt="Bota Coturno Casual" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        <span class="qtd-avaliacoes">(32)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span class="qtd-avaliacoes">(32)</span></div>
                     <div class="produto-nome">Bota Coturno Casual</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 289,90</span>
-                        <span class="preco-antigo">R$ 340,00</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 289,90</span><span class="preco-antigo">R$ 340,00</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -474,21 +285,16 @@
                 </div>
             </div>
 
-            <!-- PRODUTO 3 -->
+            <!-- PRODUTO 3 (IMAGEM CORRIGIDA VIA URL) -->
             <div class="produto-card">
                 <div class="produto-imagem-wrapper">
                     <span class="badge-tag">Popular</span>
-                    <img src="mocassim.slim.webp" alt="Mocassim Jovem Slim" class="produto-foto">
+                    <img src="https://images.unsplash.com/photo-1614252369475-531eda835eb1?q=80&w=600" alt="Mocassim Jovem Slim" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        <span class="qtd-avaliacoes">(19)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(19)</span></div>
                     <div class="produto-nome">Mocassim Jovem Slim</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 199,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 199,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -503,15 +309,9 @@
                     <img src="tenis.ca.jfif" alt="Tênis Cano Alto Retro" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span class="qtd-avaliacoes">(64)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(64)</span></div>
                     <div class="produto-nome">Tênis Cano Alto Retro</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 279,90</span>
-                        <span class="preco-antigo">R$ 349,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 279,90</span><span class="preco-antigo">R$ 349,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -526,14 +326,9 @@
                     <img src="sneaker.jfif" alt="Sneaker Sport Casual" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        <span class="qtd-avaliacoes">(27)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span class="qtd-avaliacoes">(27)</span></div>
                     <div class="produto-nome">Sneaker Sport Casual</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 259,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 259,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -548,15 +343,9 @@
                     <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600" alt="Tênis Running Modern" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span class="qtd-avaliacoes">(53)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(53)</span></div>
                     <div class="produto-nome">Tênis Running Modern</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 229,90</span>
-                        <span class="preco-antigo">R$ 259,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 229,90</span><span class="preco-antigo">R$ 259,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -571,14 +360,9 @@
                     <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600" alt="Sneaker Minimalist White" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span class="qtd-avaliacoes">(81)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(81)</span></div>
                     <div class="produto-nome">Sneaker Minimalist White</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 269,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 269,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -593,15 +377,9 @@
                     <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=600" alt="Sapato Social Couro Black" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        <span class="qtd-avaliacoes">(14)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(14)</span></div>
                     <div class="produto-nome">Sapato Social Couro Black</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 319,90</span>
-                        <span class="preco-antigo">R$ 459,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 319,90</span><span class="preco-antigo">R$ 459,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -616,14 +394,9 @@
                     <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=600" alt="Tênis Skate Premium" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        <span class="qtd-avaliacoes">(40)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span class="qtd-avaliacoes">(40)</span></div>
                     <div class="produto-nome">Tênis Skate Premium</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 239,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 239,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -638,14 +411,9 @@
                     <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600" alt="Bota Chelsea Suede" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span class="qtd-avaliacoes">(22)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(22)</span></div>
                     <div class="produto-nome">Bota Chelsea Suede</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 299,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 299,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -653,22 +421,16 @@
                 </div>
             </div>
 
-            <!-- PRODUTO 11 -->
+            <!-- PRODUTO 11 (SLIP-ON COM IMAGEM REAL DE CALÇADO) -->
             <div class="produto-card">
                 <div class="produto-imagem-wrapper">
                     <span class="badge-tag desconto">25% OFF</span>
-                    <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=600" alt="Tênis Slip-On Canvas" class="produto-foto">
+                    <img src="https://images.unsplash.com/photo-1562183241-b937e95585b6?q=80&w=600" alt="Tênis Slip-On Canvas" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                        <span class="qtd-avaliacoes">(35)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(35)</span></div>
                     <div class="produto-nome">Tênis Slip-On Canvas</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 179,90</span>
-                        <span class="preco-antigo">R$ 239,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 179,90</span><span class="preco-antigo">R$ 239,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -683,14 +445,9 @@
                     <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=600" alt="Sneaker Urban Chunky" class="produto-foto">
                 </div>
                 <div class="produto-info">
-                    <div class="produto-avaliacao">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span class="qtd-avaliacoes">(59)</span>
-                    </div>
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(59)</span></div>
                     <div class="produto-nome">Sneaker Urban Chunky</div>
-                    <div class="produto-preco-box">
-                        <span class="produto-preco">R$ 309,90</span>
-                    </div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 309,90</span></div>
                 </div>
                 <div class="botoes-grupo">
                     <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
@@ -701,12 +458,11 @@
         </div>
     </main>
 
-    <!-- RODAPÉ COMPLETO -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Sobre a Sergus</h4>
-                <p style="font-size: 14px; line-height: 1.5;">Marca focada na cultura urbana e calçados com design moderno, conforto e alta durabilidade.</p>
+                <p style="font-size: 14px;">Marca focada na cultura urbana e calçados com design moderno.</p>
                 <div class="redes-sociais">
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -720,24 +476,20 @@
                     <li><a href="#">Política de Trocas</a></li>
                     <li><a href="#">Rastrear Pedido</a></li>
                     <li><a href="#">Termos de Uso</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Pagamento</h4>
-                <p style="font-size: 14px; margin-bottom: 10px;">Aceitamos as principais bandeiras:</p>
                 <div class="pagamentos">
                     <i class="fa-brands fa-cc-visa"></i>
                     <i class="fa-brands fa-cc-mastercard"></i>
                     <i class="fa-solid fa-pix"></i>
-                    <i class="fa-solid fa-barcode"></i>
                 </div>
             </div>
 
             <div class="footer-col">
                 <h4>Newsletter</h4>
-                <p style="font-size: 14px; margin-bottom: 10px;">Receba ofertas exclusivas em primeira mão.</p>
                 <form class="newsletter-form" onsubmit="event.preventDefault();">
                     <input type="email" placeholder="Seu e-mail..." required>
                     <button type="submit">Cadastrar</button>
