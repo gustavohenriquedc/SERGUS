@@ -535,11 +535,12 @@
                     <button class="btn-comprar" onclick="adicionarAoCarrinho('Bota Coturno Casual', 289.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
-<!-- PRODUTO 3 -->
+
+            <!-- PRODUTO 3 (IMAGEM CORRIGIDA) -->
             <div class="produto-card" data-categoria="social">
                 <div class="produto-imagem-wrapper">
                     <span class="badge-tag">Popular</span>
-                    <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?q=80&w=600" alt="Mocassim Jovem Slim" class="produto-foto">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600" alt="Mocassim Jovem Slim" class="produto-foto">
                 </div>
                 <div class="produto-info">
                     <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(19)</span></div>
@@ -724,143 +725,47 @@
             </div>
             <div class="depoimento-card">
                 <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Comprei o mocassim e me surpreendi. Serve perfeitamente para ocasiões casuais e mais formais. Recomendo demais."</p>
+                <p>"Atendimento excelente e o mocassim veste muito bem. Recomendo de olhos fechados!"</p>
                 <div class="cliente-nome">Gabriel T. — Rio de Janeiro/RJ</div>
             </div>
         </div>
     </section>
 
-    <!-- GAVETA LATERAL DO CARRINHO (INTERATIVO) -->
-    <div class="carrinho-overlay" id="cart-overlay" onclick="toggleCarrinho()"></div>
-    <div class="carrinho-modal" id="cart-modal">
-        <div class="carrinho-header">
-            <h3>Seu Carrinho</h3>
-            <button class="btn-fechar-carrinho" onclick="toggleCarrinho()"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="carrinho-body" id="cart-items">
-            <p style="text-align: center; color: #71717a; margin-top: 40px;">Seu carrinho está vazio.</p>
-        </div>
-        <div class="carrinho-footer">
-            <div class="total-box">
-                <span>Total:</span>
-                <span id="cart-total">R$ 0,00</span>
-            </div>
-            <button class="btn-finalizar" onclick="alert('Redirecionando para a página de checkout seguro!')">Finalizar Compra</button>
-        </div>
-    </div>
-
-    <!-- RODAPÉ -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Sobre a Sergus</h4>
-                <p style="font-size: 14px;">Marca focada na cultura urbana e calçados com design moderno.</p>
-                <div class="redes-sociais">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
+                <p>Nossa missão é trazer calçados masculinos com design moderno, conforto e durabilidade diretamente para o seu estilo.</p>
             </div>
-            
             <div class="footer-col">
-                <h4>Links Úteis</h4>
+                <h4>Navegação</h4>
                 <ul>
-                    <li><a href="#">Política de Trocas</a></li>
-                    <li><a href="#">Rastrear Pedido</a></li>
-                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#vitrine-loja">Todos os Produtos</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
-                <h4>Pagamento</h4>
+                <h4>Formas de Pagamento</h4>
                 <div class="pagamentos">
                     <i class="fa-brands fa-cc-visa"></i>
                     <i class="fa-brands fa-cc-mastercard"></i>
                     <i class="fa-solid fa-pix"></i>
                 </div>
             </div>
-
             <div class="footer-col">
                 <h4>Newsletter</h4>
                 <form class="newsletter-form" onsubmit="event.preventDefault();">
-                    <input type="email" placeholder="Seu e-mail..." required>
+                    <input type="email" placeholder="Seu e-mail principal">
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; 2026 Sergus Streetwear. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Sergus - Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT DE FUNCIONALIDADES DA LOJA -->
-    <script>
-        let carrinho = [];
-
-        function toggleCarrinho() {
-            document.getElementById('cart-modal').classList.toggle('ativo');
-            document.getElementById('cart-overlay').classList.toggle('ativo');
-        }
-
-        function adicionarAoCarrinho(nome, preco) {
-            carrinho.push({ nome, preco });
-            atualizarCarrinho();
-            toggleCarrinho();
-        }
-
-        function removerDoCarrinho(index) {
-            carrinho.splice(index, 1);
-            atualizarCarrinho();
-        }
-
-        function atualizarCarrinho() {
-            const containerItens = document.getElementById('cart-items');
-            const elementoTotal = document.getElementById('cart-total');
-            const elementoContador = document.getElementById('cart-count');
-
-            elementoContador.innerText = carrinho.length;
-
-            if (carrinho.length === 0) {
-                containerItens.innerHTML = '<p style="text-align: center; color: #71717a; margin-top: 40px;">Seu carrinho está vazio.</p>';
-                elementoTotal.innerText = 'R$ 0,00';
-                return;
-            }
-
-            let html = '';
-            let total = 0;
-
-            carrinho.forEach((item, index) => {
-                total += item.preco;
-                html += `
-                    <div class="item-carrinho">
-                        <div class="item-carrinho-info">
-                            <strong>${item.nome}</strong>
-                            <span class="item-carrinho-preco">R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
-                        </div>
-                        <button class="btn-remover-item" onclick="removerDoCarrinho(${index})"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
-                `;
-            });
-
-            containerItens.innerHTML = html;
-            elementoTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
-
-        function filtrarProdutos(categoria, botao) {
-            const botoes = document.querySelectorAll('.btn-filtro');
-            botoes.forEach(b => b.classList.remove('ativo'));
-            botao.classList.add('ativo');
-
-            const produtos = document.querySelectorAll('.produto-card');
-            produtos.forEach(produto => {
-                if (categoria === 'todos' || produto.getAttribute('data-categoria') === categoria) {
-                    produto.style.display = 'flex';
-                } else {
-                    produto.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
