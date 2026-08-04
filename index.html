@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
+    <!-- Biblioteca de Ícones (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -18,10 +21,27 @@
             color: #18181b;
         }
 
+        /* 1. TOP BANNER DE ANÚNCIOS */
+        .top-banner {
+            background-color: #18181b;
+            color: #f4f4f5;
+            font-size: 13px;
+            text-align: center;
+            padding: 8px 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .top-banner strong {
+            color: #38bdf8;
+        }
+
+        /* HERO LANDING COM OVERLAY */
         .capa-container {
-            background-color: #09090b;
+            background: linear-gradient(rgba(9, 9, 11, 0.75), rgba(9, 9, 11, 0.75)), 
+                        url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1600') center/cover no-repeat;
             color: white;
-            height: 100vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -39,11 +59,10 @@
         }
 
         .capa-container p {
-            color: #a1a1aa;
+            color: #e4e4e7;
             font-size: 18px;
             max-width: 600px;
             margin-bottom: 35px;
-            letter-spacing: 1px;
             line-height: 1.6;
         }
 
@@ -58,8 +77,7 @@
             border-radius: 30px;
             cursor: pointer;
             letter-spacing: 2px;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
         }
 
         .btn-explorar:hover {
@@ -67,28 +85,28 @@
             transform: scale(1.05);
         }
 
+        /* HEADER FIXO COM ÍCONES */
         header {
             background-color: #09090b;
             color: white;
-            padding: 20px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-top: 1px solid #27272a;
+            border-bottom: 1px solid #27272a;
         }
 
         header h1 {
             letter-spacing: 2px;
             font-size: 24px;
-            text-transform: uppercase;
         }
 
         nav {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         nav a {
@@ -102,8 +120,33 @@
             color: #a1a1aa;
         }
 
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 18px;
+        }
+
+        .header-icons a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .carrinho-contador {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* VITRINE DE PRODUTOS */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 60px auto;
             padding: 0 20px;
         }
@@ -111,32 +154,72 @@
         .vitrine {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            gap: 30px;
         }
 
         .produto-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .produto-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .produto-imagem-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .badge-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #09090b;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .badge-tag.desconto {
+            background-color: #dc2626;
         }
 
         .produto-foto {
             width: 100%;
-            height: 240px;
-            background-color: #e4e4e7;
-            border-radius: 6px;
-            margin-bottom: 15px;
+            height: 260px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* EFEITO HOVER NA IMAGEM */
+        .produto-imagem-wrapper:hover .produto-foto {
+            transform: scale(1.08);
+        }
+
+        .produto-avaliacao {
+            color: #f59e0b;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .qtd-avaliacoes {
+            color: #71717a;
+            font-size: 12px;
+            margin-left: 4px;
         }
 
         .produto-nome {
@@ -145,28 +228,44 @@
             margin-bottom: 8px;
         }
 
+        .produto-preco-box {
+            margin-bottom: 15px;
+        }
+
         .produto-preco {
             font-size: 20px;
             font-weight: bold;
             color: #09090b;
-            margin-bottom: 15px;
+        }
+
+        .preco-antigo {
+            font-size: 14px;
+            color: #a1a1aa;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: normal;
         }
 
         .botoes-grupo {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn-comprar, .btn-detalhes {
             border: none;
             padding: 12px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
         }
 
         .btn-comprar {
@@ -179,105 +278,298 @@
         }
 
         .btn-detalhes {
-            background-color: #e4e4e7;
+            background-color: #f4f4f5;
             color: #09090b;
+            border: 1px solid #e4e4e7;
         }
 
         .btn-detalhes:hover {
-            background-color: #d4d4d8;
+            background-color: #e4e4e7;
         }
 
+        /* 3. RODAPÉ PROFISSIONAL (FOOTER) */
         footer {
             background-color: #09090b;
-            color: #71717a;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            color: #a1a1aa;
+            padding: 60px 40px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: color 0.2s;
             font-size: 14px;
         }
 
-        @media (max-width: 600px) {
-            .capa-container h2 { font-size: 44px; }
-            .capa-container p { font-size: 16px; }
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #27272a;
+            background-color: #18181b;
+            color: white;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 12px;
+            background-color: white;
+            color: #09090b;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .redes-sociais, .pagamentos {
+            display: flex;
+            gap: 15px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .redes-sociais a {
+            color: #a1a1aa;
+            transition: color 0.2s;
+        }
+
+        .redes-sociais a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-top: 1px solid #27272a;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
             .vitrine { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .capa-container h2 { font-size: 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            header { padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- TOP BANNER -->
+    <div class="top-banner">
+        <i class="fa-solid fa-truck-fast"></i> Frete Grátis para todo o Brasil em compras acima de <strong>R$ 299</strong>
+    </div>
+
+    <!-- SEÇÃO HERO DA CAPA -->
     <section class="capa-container">
         <h2>Sergus</h2>
-        <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés. Descubra uma nova experiência em calçados urbanos.</p>
-        <button class="btn-explorar" onclick="irParaProdutos()">Explorar Coleção</button>
+        <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés. Descubra a nova coleção urbana.</p>
+        <button class="btn-explorar" onclick="document.getElementById('vitrine-loja').scrollIntoView();">Explorar Coleção</button>
     </section>
 
+    <!-- HEADER / MENU PRINCIPAL -->
     <header>
         <h1>SERGUS</h1>
         <nav>
             <a href="#">Home</a>
             <a href="#vitrine-loja">Produtos</a>
-            <a href="#">Contato</a>
+            <a href="#">Lançamentos</a>
         </nav>
+        <div class="header-icons">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <a href="#">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="carrinho-contador">2</span>
+            </a>
+        </div>
     </header>
 
+    <!-- CONTAINER DA VITRINE -->
     <main class="container" id="vitrine-loja">
         <div class="vitrine">
             
+            <!-- PRODUTO 1 -->
             <div class="produto-card">
-                <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
-                <div class="produto-nome">Tênis Streetwear Urban</div>
-                <div class="produto-preco">R$ 249,90</div>
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Lançamento</span>
+                    <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span class="qtd-avaliacoes">(48)</span>
+                    </div>
+                    <div class="produto-nome">Tênis Streetwear Urban</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 249,90</span>
+                    </div>
+                </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
 
+            <!-- PRODUTO 2 -->
             <div class="produto-card">
-                <img src="bota.coturno.webp" alt="Bota Coturno Casual" class="produto-foto">
-                <div class="produto-nome">Bota Coturno Casual</div>
-                <div class="produto-preco">R$ 289,90</div>
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">15% OFF</span>
+                    <img src="bota.coturno.webp" alt="Bota Coturno Casual" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span class="qtd-avaliacoes">(32)</span>
+                    </div>
+                    <div class="produto-nome">Bota Coturno Casual</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 289,90</span>
+                        <span class="preco-antigo">R$ 340,00</span>
+                    </div>
+                </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
 
+            <!-- PRODUTO 3 -->
             <div class="produto-card">
-                <img src="mocassim.slim.webp" alt="Mocassim Jovem Slim" class="produto-foto">
-                <div class="produto-nome">Mocassim Jovem Slim</div>
-                <div class="produto-preco">R$ 199,90</div>
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Popular</span>
+                    <img src="mocassim.slim.webp" alt="Mocassim Jovem Slim" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        <span class="qtd-avaliacoes">(19)</span>
+                    </div>
+                    <div class="produto-nome">Mocassim Jovem Slim</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 199,90</span>
+                    </div>
+                </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
 
+            <!-- PRODUTO 4 -->
             <div class="produto-card">
-                <img src="tenis.ca.jfif" alt="Tênis Cano Alto Retro" class="produto-foto">
-                <div class="produto-nome">Tênis Cano Alto Retro</div>
-                <div class="produto-preco">R$ 279,90</div>
-                <div class="botoes-grupo">
-                    <button class="btn-detalhes">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">20% OFF</span>
+                    <img src="tenis.ca.jfif" alt="Tênis Cano Alto Retro" class="produto-foto">
                 </div>
-            </div>
-
-            <div class="produto-card">
-                <img src="sneaker.jfif" alt="Sneaker Sport Casual" class="produto-foto">
-                <div class="produto-nome">Sneaker Sport Casual</div>
-                <div class="produto-preco">R$ 259,90</div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span class="qtd-avaliacoes">(64)</span>
+                    </div>
+                    <div class="produto-nome">Tênis Cano Alto Retro</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 279,90</span>
+                        <span class="preco-antigo">R$ 349,90</span>
+                    </div>
+                </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes">Ver Detalhes</button>
-                    <button class="btn-comprar">Comprar</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
 
         </div>
     </main>
 
+    <!-- RODAPÉ COMPLETO -->
     <footer>
-        <p>&copy; 2026 Sergus. Todos os direitos reservados.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Sobre a Sergus</h4>
+                <p style="font-size: 14px; line-height: 1.5;">Marca focada na cultura urbana e calçados com design moderno, conforto e alta durabilidade.</p>
+                <div class="redes-sociais">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Links Úteis</h4>
+                <ul>
+                    <li><a href="#">Politica de Trocas</a></li>
+                    <li><a href="#">Rastrear Pedido</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Pagamento</h4>
+                <p style="font-size: 14px; margin-bottom: 10px;">Aceitamos as principais bandeiras:</p>
+                <div class="pagamentos">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-solid fa-pix"></i>
+                    <i class="fa-solid fa-barcode"></i>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="font-size: 14px; margin-bottom: 10px;">Receba ofertas exclusivas em primeira mão.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Seu e-mail..." required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sergus Streetwear. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </body>
