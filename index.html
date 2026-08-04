@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
     <style>
-        /* Configurações Gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth; /* Faz a página rolar suavemente via JavaScript */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -19,13 +18,10 @@
             color: #18181b;
         }
 
-        /* ========================================================
-           🔥 NOVA CAPA EM TELA CHEIA (HERO LANDING)
-           ======================================================== */
         .capa-container {
             background-color: #09090b;
             color: white;
-            height: 100vh; /* Ocupa exatamente 100% da altura da tela */
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -68,10 +64,9 @@
 
         .btn-explorar:hover {
             background-color: #e4e4e7;
-            transform: scale(1.05); /* Efeito de zoom leve ao passar o mouse */
+            transform: scale(1.05);
         }
 
-        /* Menu / Cabeçalho */
         header {
             background-color: #09090b;
             color: white;
@@ -107,21 +102,18 @@
             color: #a1a1aa;
         }
 
-        /* Container da Vitrine */
         .container {
             max-width: 900px;
             margin: 60px auto;
             padding: 0 20px;
         }
 
-        /* Grade de Produtos - 2 colunas fixas */
         .vitrine {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 25px;
         }
 
-        /* Cartão do Produto */
         .produto-card {
             background-color: white;
             border-radius: 8px;
@@ -136,10 +128,6 @@
 
         .produto-card:hover {
             transform: translateY(-3px);
-        }
-
-        .ultimo-produto {
-            grid-column: 2;
         }
 
         .produto-foto {
@@ -164,16 +152,13 @@
             margin-bottom: 15px;
         }
 
-        /* Estilos dos Botões */
         .botoes-grupo {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .btn-comprar {
-            background-color: #09090b;
-            color: white;
+        .btn-comprar, .btn-detalhes {
             border: none;
             padding: 12px;
             border-radius: 5px;
@@ -182,6 +167,11 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 13px;
+        }
+
+        .btn-comprar {
+            background-color: #09090b;
+            color: white;
         }
 
         .btn-comprar:hover {
@@ -191,21 +181,12 @@
         .btn-detalhes {
             background-color: #e4e4e7;
             color: #09090b;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 13px;
         }
 
         .btn-detalhes:hover {
             background-color: #d4d4d8;
         }
 
-        /* Rodapé */
         footer {
             background-color: #09090b;
             color: #71717a;
@@ -215,83 +196,89 @@
             font-size: 14px;
         }
 
-        /* Responsividade Básica */
         @media (max-width: 600px) {
             .capa-container h2 { font-size: 44px; }
             .capa-container p { font-size: 16px; }
             .vitrine { grid-template-columns: 1fr; }
-            .ultimo-produto { grid-column: auto; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NOVA SEÇÃO: CAPA DO SITE (HERO) -->
     <section class="capa-container">
         <h2>Sergus</h2>
         <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés. Descubra uma nova experiência em calçados urbanos.</p>
         <button class="btn-explorar" onclick="irParaProdutos()">Explorar Coleção</button>
     </section>
 
-    <!-- MENU PRINCIPAL -->
     <header>
         <h1>SERGUS</h1>
         <nav>
             <a href="#">Home</a>
-            <a href="#vitrine-loja" onclick="irParaProdutos()">Produtos</a>
+            <a href="#vitrine-loja">Produtos</a>
             <a href="#">Contato</a>
         </nav>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL (VITRINE) -->
     <main class="container" id="vitrine-loja">
-        
         <div class="vitrine">
             
-            <!-- Linha 1 - Coluna 1 -->
             <div class="produto-card">
                 <img src="lucid-origin_Urban_Streetwear_Sneakers_Men_s_casual_sneakers_with_a_high_sole_super_comfortab-0.jpg" alt="Tênis Streetwear Urban" class="produto-foto">
                 <div class="produto-nome">Tênis Streetwear Urban</div>
                 <div class="produto-preco">R$ 249,90</div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="verDetalhes('Tênis Streetwear Urban', 'R$ 249,90', 'Solado alto texturizado com borracha vulcanizada, palmilha anatômica em EVA expandido e cabedal em lona respirável premium.')">Ver Detalhes</button>
-                    <button class="btn-comprar" onclick="comprarItem('Tênis Streetwear Urban')">Comprar</button>
+                    <button class="btn-detalhes">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
                 </div>
             </div>
 
-            <!-- Linha 1 - Coluna 2 -->
             <div class="produto-card">
                 <img src="bota.coturno.webp" alt="Bota Coturno Casual" class="produto-foto">
                 <div class="produto-nome">Bota Coturno Casual</div>
                 <div class="produto-preco">R$ 289,90</div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="verDetalhes('Bota Coturno Casual', 'R$ 289,90', 'Corte em couro sintético ecológico de alta qualidade, costuras duplas reforçadas e revestimento interno acolchoado.')">Ver Detalhes</button>
-                    <button class="btn-comprar" onclick="comprarItem('Bota Coturno Casual')">Comprar</button>
+                    <button class="btn-detalhes">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
                 </div>
             </div>
 
-            <!-- Linha 2 - Coluna 1 -->
             <div class="produto-card">
                 <img src="mocassim.slim.webp" alt="Mocassim Jovem Slim" class="produto-foto">
                 <div class="produto-nome">Mocassim Jovem Slim</div>
                 <div class="produto-preco">R$ 199,90</div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="verDetalhes('Mocassim Jovem Slim', 'R$ 199,90', 'Modelo prático sem cadarço estilo slip-on. Traz solado minimalista antiderrapante e costuras artesanais frontais.')">Ver Detalhes</button>
-                    <button class="btn-comprar" onclick="comprarItem('Mocassim Jovem Slim')">Comprar</button>
+                    <button class="btn-detalhes">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
                 </div>
             </div>
 
-            <!-- Linha 2 - Coluna 2 -->
             <div class="produto-card">
                 <img src="tenis.ca.jfif" alt="Tênis Cano Alto Retro" class="produto-foto">
                 <div class="produto-nome">Tênis Cano Alto Retro</div>
                 <div class="produto-preco">R$ 279,90</div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes" onclick="verDetalhes('Tênis Cano Alto Retro', 'R$ 279,90', 'Visual retrô inspirado nas quadras de basquete dos anos 90. Confeccionado em camurça macia com cano alto protetor.')">Ver Detalhes</button>
-                    <button class="btn-comprar" onclick="comprarItem('Tênis Cano Alto Retro')">Comprar</button>
+                    <button class="btn-detalhes">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
                 </div>
             </div>
 
-            <!-- Linha 3 - Coluna 1 -->
             <div class="produto-card">
                 <img src="sneaker.jfif" alt="Sneaker Sport Casual" class="produto-foto">
+                <div class="produto-nome">Sneaker Sport Casual</div>
+                <div class="produto-preco">R$ 259,90</div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes">Ver Detalhes</button>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sergus. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
