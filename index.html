@@ -21,7 +21,7 @@
             color: #18181b;
         }
 
-        /* 1. TOP BANNER DE ANÚNCIOS */
+        /* TOP BANNER DE ANÚNCIOS */
         .top-banner {
             background-color: #18181b;
             color: #f4f4f5;
@@ -146,15 +146,15 @@
 
         /* VITRINE DE PRODUTOS */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 60px auto;
             padding: 0 20px;
         }
 
         .vitrine {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
         .produto-card {
@@ -200,12 +200,11 @@
 
         .produto-foto {
             width: 100%;
-            height: 260px;
+            height: 240px;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        /* EFEITO HOVER NA IMAGEM */
         .produto-imagem-wrapper:hover .produto-foto {
             transform: scale(1.08);
         }
@@ -223,7 +222,7 @@
         }
 
         .produto-nome {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             margin-bottom: 8px;
         }
@@ -233,13 +232,13 @@
         }
 
         .produto-preco {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: bold;
             color: #09090b;
         }
 
         .preco-antigo {
-            font-size: 14px;
+            font-size: 13px;
             color: #a1a1aa;
             text-decoration: line-through;
             margin-left: 8px;
@@ -249,18 +248,18 @@
         .botoes-grupo {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn-comprar, .btn-detalhes {
             border: none;
-            padding: 12px;
+            padding: 10px;
             border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -287,7 +286,7 @@
             background-color: #e4e4e7;
         }
 
-        /* 3. RODAPÉ PROFISSIONAL (FOOTER) */
+        /* RODAPÉ PROFISSIONAL (FOOTER) */
         footer {
             background-color: #09090b;
             color: #a1a1aa;
@@ -382,15 +381,15 @@
             font-size: 13px;
         }
 
-        @media (max-width: 768px) {
-            .vitrine { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-            .capa-container h2 { font-size: 40px; }
+        @media (max-width: 900px) {
+            .vitrine { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
+            .vitrine { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             header { padding: 15px 20px; }
+            .capa-container h2 { font-size: 40px; }
         }
     </style>
 </head>
@@ -426,7 +425,7 @@
         </div>
     </header>
 
-    <!-- CONTAINER DA VITRINE -->
+    <!-- CONTAINER DA VITRINE COM 12 PRODUTOS -->
     <main class="container" id="vitrine-loja">
         <div class="vitrine">
             
@@ -447,7 +446,7 @@
                     </div>
                 </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
                     <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
@@ -470,7 +469,7 @@
                     </div>
                 </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
                     <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
@@ -492,7 +491,7 @@
                     </div>
                 </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
                     <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
@@ -515,7 +514,186 @@
                     </div>
                 </div>
                 <div class="botoes-grupo">
-                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Ver Detalhes</button>
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 5 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Exclusivo</span>
+                    <img src="sneaker.jfif" alt="Sneaker Sport Casual" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span class="qtd-avaliacoes">(27)</span>
+                    </div>
+                    <div class="produto-nome">Sneaker Sport Casual</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 259,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 6 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">10% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600" alt="Tênis Running Modern" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span class="qtd-avaliacoes">(53)</span>
+                    </div>
+                    <div class="produto-nome">Tênis Running Modern</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 229,90</span>
+                        <span class="preco-antigo">R$ 259,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 7 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Lançamento</span>
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600" alt="Sneaker Minimalist White" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span class="qtd-avaliacoes">(81)</span>
+                    </div>
+                    <div class="produto-nome">Sneaker Minimalist White</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 269,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 8 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">30% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=600" alt="Sapato Social Couro Black" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        <span class="qtd-avaliacoes">(14)</span>
+                    </div>
+                    <div class="produto-nome">Sapato Social Couro Black</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 319,90</span>
+                        <span class="preco-antigo">R$ 459,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 9 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Tendência</span>
+                    <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=600" alt="Tênis Skate Premium" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span class="qtd-avaliacoes">(40)</span>
+                    </div>
+                    <div class="produto-nome">Tênis Skate Premium</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 239,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 10 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Lançamento</span>
+                    <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600" alt="Bota Chelsea Suede" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span class="qtd-avaliacoes">(22)</span>
+                    </div>
+                    <div class="produto-nome">Bota Chelsea Suede</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 299,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 11 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">25% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=600" alt="Tênis Slip-On Canvas" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                        <span class="qtd-avaliacoes">(35)</span>
+                    </div>
+                    <div class="produto-nome">Tênis Slip-On Canvas</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 179,90</span>
+                        <span class="preco-antigo">R$ 239,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <!-- PRODUTO 12 -->
+            <div class="produto-card">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Popular</span>
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=600" alt="Sneaker Urban Chunky" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span class="qtd-avaliacoes">(59)</span>
+                    </div>
+                    <div class="produto-nome">Sneaker Urban Chunky</div>
+                    <div class="produto-preco-box">
+                        <span class="produto-preco">R$ 309,90</span>
+                    </div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
                     <button class="btn-comprar"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
                 </div>
             </div>
@@ -539,7 +717,7 @@
             <div class="footer-col">
                 <h4>Links Úteis</h4>
                 <ul>
-                    <li><a href="#">Politica de Trocas</a></li>
+                    <li><a href="#">Política de Trocas</a></li>
                     <li><a href="#">Rastrear Pedido</a></li>
                     <li><a href="#">Termos de Uso</a></li>
                     <li><a href="#">Política de Privacidade</a></li>
