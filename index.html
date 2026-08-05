@@ -1,106 +1,870 @@
-<script>
-    // 1. Estado do Carrinho (guarda os produtos selecionados)
-    let carrinho = [];
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergus | Sapatos Masculinos e Tênis Streetwear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    // 2. Função para Filtrar Produtos por Categoria
-    function filtrarProdutos(categoria, botao) {
-        // Remove a classe 'ativo' de todos os botões de filtro
-        const botoesFiltro = document.querySelectorAll('.btn-filtro');
-        botoesFiltro.forEach(btn => btn.classList.remove('ativo'));
+        body {
+            background-color: #f4f4f5;
+            color: #18181b;
+        }
+
+        /* BANNER TOPO */
+        .top-banner {
+            background-color: #18181b;
+            color: #f4f4f5;
+            font-size: 13px;
+            text-align: center;
+            padding: 8px 15px;
+            font-weight: 500;
+        }
+
+        /* HEADER FIXO */
+        header {
+            background-color: #09090b;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 { letter-spacing: 2px; font-size: 24px; }
         
-        // Adiciona a classe 'ativo' apenas no botão que foi clicado
-        botao.classList.add('ativo');
+        nav { display: flex; gap: 25px; }
+        nav a { color: white; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: #a1a1aa; }
 
-        // Seleciona todos os cards de produtos da vitrine
-        const produtos = document.querySelectorAll('.produto-card');
+        .menu-hamburguer {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
 
-        // Percorre cada produto e decide se deve aparecer ou sumir
-        produtos.forEach(produto => {
-            const categoriaProduto = produto.getAttribute('data-categoria');
+        .header-icons { display: flex; align-items: center; gap: 20px; font-size: 18px; }
+        .header-icons a { color: white; text-decoration: none; position: relative; cursor: pointer; }
+
+        .busca-wrapper input {
+            background-color: #18181b;
+            border: 1px solid #27272a;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            outline: none;
+            width: 150px;
+            transition: width 0.3s ease;
+        }
+
+        .busca-wrapper input:focus {
+            width: 200px;
+            border-color: #71717a;
+        }
+
+        .carrinho-contador {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* HERO CAPA */
+        .capa-container {
+            background: linear-gradient(rgba(9, 9, 11, 0.75), rgba(9, 9, 11, 0.75)), 
+                        url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1600') center/cover no-repeat;
+            color: white;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .capa-container h2 {
+            font-size: 64px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .capa-container p {
+            color: #e4e4e7;
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 35px;
+        }
+
+        .btn-explorar {
+            background-color: white;
+            color: #09090b;
+            border: none;
+            padding: 16px 45px;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-explorar:hover {
+            transform: scale(1.05);
+            background-color: #e4e4e7;
+        }
+
+        /* SEÇÃO DE DIFERENCIAIS */
+        .diferenciais {
+            background-color: white;
+            border-bottom: 1px solid #e4e4e7;
+            padding: 30px 20px;
+        }
+
+        .diferenciais-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .diferencial-item i {
+            font-size: 28px;
+            color: #09090b;
+            margin-bottom: 10px;
+        }
+
+        .diferencial-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .diferencial-item p {
+            font-size: 13px;
+            color: #71717a;
+        }
+
+        /* CONTAINER PRINCIPAL E FILTROS */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .filtros-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-filtro {
+            background-color: white;
+            border: 1px solid #d4d4d8;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-filtro.ativo, .btn-filtro:hover {
+            background-color: #09090b;
+            color: white;
+            border-color: #09090b;
+        }
+
+        /* VITRINE */
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .produto-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+        }
+
+        .produto-card:hover { transform: translateY(-5px); }
+
+        .produto-imagem-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .badge-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #09090b;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .badge-tag.desconto { background-color: #dc2626; }
+
+        .produto-foto {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .produto-imagem-wrapper:hover .produto-foto { transform: scale(1.08); }
+        .produto-avaliacao { color: #f59e0b; font-size: 13px; margin-bottom: 6px; }
+        .qtd-avaliacoes { color: #71717a; font-size: 12px; }
+        .produto-nome { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+        .produto-preco-box { margin-bottom: 15px; }
+        .produto-preco { font-size: 19px; font-weight: bold; color: #09090b; }
+        .preco-antigo { font-size: 13px; color: #a1a1aa; text-decoration: line-through; margin-left: 8px; }
+
+        .botoes-grupo { display: flex; flex-direction: column; gap: 8px; }
+        .btn-comprar, .btn-detalhes {
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-comprar { background-color: #09090b; color: white; transition: background 0.2s; }
+        .btn-comprar:hover { background-color: #27272a; }
+        .btn-detalhes { background-color: #f4f4f5; color: #09090b; border: 1px solid #e4e4e7; }
+
+        /* SEÇÃO DE DEPOIMENTOS */
+        .depoimentos-secao {
+            background-color: white;
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #e4e4e7;
+        }
+
+        .depoimentos-secao h3 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .depoimentos-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .depoimento-card {
+            background-color: #f4f4f5;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .depoimento-card .estrelas { color: #f59e0b; margin-bottom: 12px; font-size: 14px; }
+        .depoimento-card p { font-size: 14px; color: #3f3f46; line-height: 1.5; margin-bottom: 15px; }
+        .cliente-nome { font-weight: bold; font-size: 14px; color: #09090b; }
+
+        /* GAVETA LATERAL DO CARRINHO */
+        .carrinho-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s ease;
+        }
+
+        .carrinho-modal.ativo { right: 0; }
+
+        .carrinho-header {
+            padding: 20px;
+            background-color: #09090b;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-fechar-carrinho {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .carrinho-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .item-carrinho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .item-carrinho-info { font-size: 14px; }
+        .item-carrinho-info strong { display: block; margin-bottom: 4px; }
+        .item-carrinho-preco { font-weight: bold; color: #09090b; }
+        .btn-remover-item { color: #ef4444; border: none; background: none; cursor: pointer; font-size: 14px; }
+
+        .carrinho-footer {
+            padding: 20px;
+            border-top: 1px solid #e4e4e7;
+            background-color: #fafafa;
+        }
+
+        .total-box {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-finalizar {
+            width: 100%;
+            background-color: #09090b;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn-esvaziar {
+            width: 100%;
+            background-color: transparent;
+            color: #ef4444;
+            border: 1px solid #ef4444;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-esvaziar:hover {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .carrinho-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+            display: none;
+        }
+
+        .carrinho-overlay.ativo { display: block; }
+
+        /* FOOTER */
+        footer {
+            background-color: #09090b;
+            color: #a1a1aa;
+            padding: 60px 40px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 { color: white; font-size: 16px; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #a1a1aa; text-decoration: none; }
+
+        .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+        .newsletter-form input { padding: 12px; border-radius: 4px; border: 1px solid #27272a; background-color: #18181b; color: white; }
+        .newsletter-form button { padding: 12px; background-color: white; color: #09090b; font-weight: bold; border: none; border-radius: 4px; cursor: pointer; }
+        .redes-sociais, .pagamentos { display: flex; gap: 15px; font-size: 20px; margin-top: 10px; }
+        .redes-sociais a { color: #a1a1aa; }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-top: 1px solid #27272a;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVIDADE TABLET E MOBILE */
+        @media (max-width: 900px) {
+            .vitrine, .depoimentos-grid { grid-template-columns: repeat(2, 1fr); }
+            .diferenciais-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        }
+
+        @media (max-width: 600px) {
+            .vitrine, .footer-grid, .diferenciais-grid, .depoimentos-grid { grid-template-columns: 1fr; }
+            .capa-container h2 { font-size: 40px; }
+            header { padding: 15px 20px; }
             
-            if (categoria === 'todos' || categoriaProduto === categoria) {
-                produto.style.display = 'flex';
-            } else {
-                produto.style.display = 'none';
+            .menu-hamburguer { display: block; }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background-color: #09090b;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                border-bottom: 1px solid #27272a;
             }
-        });
-    }
 
-    // 3. Função para Abrir e Fechar a Gaveta do Carrinho
-    function toggleCarrinho() {
-        const modal = document.querySelector('.carrinho-modal');
-        const overlay = document.querySelector('.carrinho-overlay');
+            nav.ativo { display: flex; }
+            nav a { padding: 10px 0; font-size: 16px; }
+
+            .busca-wrapper input { width: 110px; }
+            .busca-wrapper input:focus { width: 140px; }
+
+            .carrinho-modal { width: 100%; right: -100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        <i class="fa-solid fa-truck-fast"></i> Frete Grátis para todo o Brasil em compras acima de <strong>R$ 299</strong>
+    </div>
+
+    <header>
+        <h1>SERGUS</h1>
         
-        modal.classList.toggle('ativo');
-        overlay.classList.toggle('ativo');
-    }
+        <button class="menu-hamburguer" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-    // 4. Função para Adicionar Produtos ao Carrinho
-    function adicionarAoCarrinho(nome, preco) {
-        // Verifica se o produto já existe no carrinho
-        const index = carrinho.findIndex(item => item.nome === nome);
+        <nav id="menu-navegacao">
+            <a href="#" onclick="toggleMenu()">Home</a>
+            <a href="#vitrine-loja" onclick="toggleMenu()">Produtos</a>
+            <a href="#depoimentos" onclick="toggleMenu()">Depoimentos</a>
+        </nav>
 
-        if (index > -1) {
-            // Se já existe, aumenta apenas a quantidade
-            carrinho[index].quantidade += 1;
-        } else {
-            // Se não existe, adiciona um novo objeto ao array
-            carrinho.push({
-                nome: nome,
-                preco: preco,
-                quantidade: 1
+        <div class="header-icons">
+            <div class="busca-wrapper">
+                <input type="text" id="input-busca" placeholder="Buscar calçado..." oninput="buscarProdutos()">
+            </div>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <a onclick="toggleCarrinho()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="carrinho-contador" id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="capa-container">
+        <h2>Sergus</h2>
+        <p>A cultura das ruas e o design contemporâneo conectados diretamente aos seus pés.</p>
+        <button class="btn-explorar" onclick="document.getElementById('vitrine-loja').scrollIntoView();">Explorar Coleção</button>
+    </section>
+
+    <section class="diferenciais">
+        <div class="diferenciais-grid">
+            <div class="diferencial-item">
+                <i class="fa-solid fa-truck"></i>
+                <h4>Frete Rápido</h4>
+                <p>Envio imediato com rastreio</p>
+            </div>
+            <div class="diferencial-item">
+                <i class="fa-solid fa-rotate-left"></i>
+                <h4>Troca Grátis</h4>
+                <p>Até 30 dias para devolver</p>
+            </div>
+            <div class="diferencial-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <h4>Até 10x Sem Juros</h4>
+                <p>No cartão ou 5% OFF no PIX</p>
+            </div>
+            <div class="diferencial-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Compra Segura</h4>
+                <p>Ambiente 100% protegido</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="container" id="vitrine-loja">
+
+        <div class="filtros-container">
+            <button class="btn-filtro ativo" onclick="filtrarProdutos('todos', this)">Todos os Produtos</button>
+            <button class="btn-filtro" onclick="filtrarProdutos('tenis', this)">Tênis Streetwear</button>
+            <button class="btn-filtro" onclick="filtrarProdutos('botas', this)">Botas & Coturnos</button>
+            <button class="btn-filtro" onclick="filtrarProdutos('social', this)">Mocassins & Sociais</button>
+        </div>
+            
+        <div class="vitrine">
+            
+            <div class="produto-card" data-categoria="tenis">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Lançamento</span>
+                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=600" alt="Tênis Streetwear Urban" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(48)</span></div>
+                    <div class="produto-nome">Tênis Streetwear Urban</div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 249,90</span></div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho('Tênis Streetwear Urban', 249.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <div class="produto-card" data-categoria="botas">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">15% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600" alt="Bota Coturno Casual" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span class="qtd-avaliacoes">(32)</span></div>
+                    <div class="produto-nome">Bota Coturno Casual</div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 289,90</span><span class="preco-antigo">R$ 340,00</span></div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho('Bota Coturno Casual', 289.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <div class="produto-card" data-categoria="social">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Popular</span>
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600" alt="Mocassim Jovem Slim" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(19)</span></div>
+                    <div class="produto-nome">Mocassim Jovem Slim</div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 199,90</span></div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho('Mocassim Jovem Slim', 199.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <div class="produto-card" data-categoria="tenis">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">20% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600" alt="Tênis Cano Alto Retro" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(64)</span></div>
+                    <div class="produto-nome">Tênis Cano Alto Retro</div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 279,90</span><span class="preco-antigo">R$ 349,90</span></div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho('Tênis Cano Alto Retro', 279.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <div class="produto-card" data-categoria="tenis">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag">Exclusivo</span>
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600" alt="Sneaker Sport Casual" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span class="qtd-avaliacoes">(27)</span></div>
+                    <div class="produto-nome">Sneaker Sport Casual</div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 259,90</span></div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho('Sneaker Sport Casual', 259.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+            <div class="produto-card" data-categoria="tenis">
+                <div class="produto-imagem-wrapper">
+                    <span class="badge-tag desconto">10% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=600" alt="Tênis Running Modern" class="produto-foto">
+                </div>
+                <div class="produto-info">
+                    <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span class="qtd-avaliacoes">(53)</span></div>
+                    <div class="produto-nome">Tênis Running Modern</div>
+                    <div class="produto-preco-box"><span class="produto-preco">R$ 229,90</span><span class="preco-antigo">R$ 259,90</span></div>
+                </div>
+                <div class="botoes-grupo">
+                    <button class="btn-detalhes"><i class="fa-regular fa-eye"></i> Detalhes</button>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho('Tênis Running Modern', 229.90)"><i class="fa-solid fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="depoimentos-secao" id="depoimentos">
+        <h3>O que dizem nossos clientes</h3>
+        <div class="depoimentos-grid">
+            <div class="depoimento-card">
+                <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Qualidade impressionante! O tênis é extremamente confortável para o dia a dia e o design chama atenção por onde passo."</p>
+                <div class="cliente-nome">Lucas M. — São Paulo/SP</div>
+            </div>
+            <div class="depoimento-card">
+                <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Entrega super rápida! Chegou em 3 dias aqui em Curitiba. A bota coturno tem um acabamento impecável."</p>
+                <div class="cliente-nome">Rafael S. — Curitiba/PR</div>
+            </div>
+            <div class="depoimento-card">
+                <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Atendimento excelente e o mocassim veste muito bem. Recomendo de olhos fechados!"</p>
+                <div class="cliente-nome">Gabriel T. — Rio de Janeiro/RJ</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="carrinho-modal">
+        <div class="carrinho-header">
+            <h3>Seu Carrinho</h3>
+            <button class="btn-fechar-carrinho" onclick="toggleCarrinho()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="carrinho-body">
+            </div>
+        <div class="carrinho-footer">
+            <div class="total-box">
+                <span>Total:</span>
+                <span>R$ 0,00</span>
+            </div>
+            <button class="btn-finalizar">Finalizar Compra</button>
+            <button class="btn-esvaziar" onclick="esvaziarCarrinho()">Esvaziar Carrinho</button>
+        </div>
+    </div>
+    <div class="carrinho-overlay" onclick="toggleCarrinho()"></div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Sobre a Sergus</h4>
+                <p>Nossa missão é trazer calçados masculinos com design moderno, conforto e durabilidade diretamente para o seu estilo.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#vitrine-loja">Todos os Produtos</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Formas de Pagamento</h4>
+                <div class="pagamentos">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-solid fa-pix"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Seu e-mail principal">
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sergus - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let carrinho = [];
+
+        // Alternar menu mobile (hambúrguer)
+        function toggleMenu() {
+            const nav = document.getElementById('menu-navegacao');
+            nav.classList.toggle('ativo');
+        }
+
+        // Filtrar produtos por categoria
+        function filtrarProdutos(categoria, botao) {
+            const botoesFiltro = document.querySelectorAll('.btn-filtro');
+            botoesFiltro.forEach(btn => btn.classList.remove('ativo'));
+            botao.classList.add('ativo');
+
+            const produtos = document.querySelectorAll('.produto-card');
+            produtos.forEach(produto => {
+                const categoriaProduto = produto.getAttribute('data-categoria');
+                if (categoria === 'todos' || categoriaProduto === categoria) {
+                    produto.style.display = 'flex';
+                } else {
+                    produto.style.display = 'none';
+                }
             });
         }
 
-        // Atualiza visualmente o carrinho na tela e abre a gaveta
-        atualizarCarrinho();
-        toggleCarrinho();
-    }
+        // Buscar produtos em tempo real
+        function buscarProdutos() {
+            const termo = document.getElementById('input-busca').value.toLowerCase();
+            const produtos = document.querySelectorAll('.produto-card');
 
-    // 5. Função para Remover um Item do Carrinho
-    function removerDoCarrinho(index) {
-        carrinho.splice(index, 1);
-        atualizarCarrinho();
-    }
-
-    // 6. Função para Atualizar a Interface do Carrinho
-    function atualizarCarrinho() {
-        const corpoCarrinho = document.querySelector('.carrinho-body');
-        const contadorCarrinho = document.getElementById('cart-count');
-        const spansTotal = document.querySelectorAll('.total-box span');
-        const spanValorTotal = spansTotal[1]; // Pega o segundo span da caixa de total
-
-        // Limpa a lista atual para reescrever com os dados atualizados
-        corpoCarrinho.innerHTML = '';
-
-        let totalItens = 0;
-        let precoTotal = 0;
-
-        if (carrinho.length === 0) {
-            corpoCarrinho.innerHTML = '<p style="text-align: center; color: #71717a; margin-top: 20px;">O seu carrinho está vazio.</p>';
-        } else {
-            carrinho.forEach((item, index) => {
-                totalItens += item.quantidade;
-                precoTotal += item.preco * item.quantidade;
-
-                const divItem = document.createElement('div');
-                divItem.classList.add('item-carrinho');
-                divItem.innerHTML = `
-                    <div class="item-carrinho-info">
-                        <strong>${item.nome}</strong>
-                        <span>Qtd: ${item.quantidade}</span>
-                        <div class="item-carrinho-preco">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</div>
-                    </div>
-                    <button class="btn-remover-item" onclick="removerDoCarrinho(${index})">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                `;
-                corpoCarrinho.appendChild(divItem);
+            produtos.forEach(produto => {
+                const nomeProduto = produto.querySelector('.produto-nome').textContent.toLowerCase();
+                if (nomeProduto.includes(termo)) {
+                    produto.style.display = 'flex';
+                } else {
+                    produto.style.display = 'none';
+                }
             });
         }
 
-        // Atualiza o número indicador no ícone da sacola no topo
-        contadorCarrinho.textContent = totalItens;
+        // Abrir/Fechar gaveta do carrinho
+        function toggleCarrinho() {
+            const modal = document.querySelector('.carrinho-modal');
+            const overlay = document.querySelector('.carrinho-overlay');
+            modal.classList.toggle('ativo');
+            overlay.classList.toggle('ativo');
+        }
 
-        // Atualiza o valor total formatado em
+        // Adicionar item ao carrinho
+        function adicionarAoCarrinho(nome, preco) {
+            const index = carrinho.findIndex(item => item.nome === nome);
+
+            if (index > -1) {
+                carrinho[index].quantidade += 1;
+            } else {
+                carrinho.push({
+                    nome: nome,
+                    preco: preco,
+                    quantidade: 1
+                });
+            }
+
+            atualizarCarrinho();
+            toggleCarrinho();
+        }
+
+        // Remover item específico do carrinho
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+        }
+
+        // Esvaziar carrinho inteiro
+        function esvaziarCarrinho() {
+            carrinho = [];
+            atualizarCarrinho();
+        }
+
+        // Atualizar interface do carrinho e contadores
+        function atualizarCarrinho() {
+            const corpoCarrinho = document.querySelector('.carrinho-body');
+            const contadorCarrinho = document.getElementById('cart-count');
+            const spansTotal = document.querySelectorAll('.total-box span');
+            const spanValorTotal = spansTotal[1];
+
+            corpoCarrinho.innerHTML = '';
+
+            let totalItens = 0;
+            let precoTotal = 0;
+
+            if (carrinho.length === 0) {
+                corpoCarrinho.innerHTML = '<p style="text-align: center; color: #71717a; margin-top: 20px;">O seu carrinho está vazio.</p>';
+            } else {
+                carrinho.forEach((item, index) => {
+                    totalItens += item.quantidade;
+                    precoTotal += item.preco * item.quantidade;
+
+                    const divItem = document.createElement('div');
+                    divItem.classList.add('item-carrinho');
+                    divItem.innerHTML = `
+                        <div class="item-carrinho-info">
+                            <strong>${item.nome}</strong>
+                            <span>Qtd: ${item.quantidade}</span>
+                            <div class="item-carrinho-preco">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</div>
+                        </div>
+                        <button class="btn-remover-item" onclick="removerDoCarrinho(${index})">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    `;
+                    corpoCarrinho.appendChild(divItem);
+                });
+            }
+
+            contadorCarrinho.textContent = totalItens;
+            if (spanValorTotal) {
+                spanValorTotal.textContent = `R$ ${precoTotal.toFixed(2).replace('.', ',')}`;
+            }
+        }
+    </script>
+</body>
+</html>
+
 
