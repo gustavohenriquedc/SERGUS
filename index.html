@@ -606,7 +606,7 @@
             <div class="produto-card" data-categoria="social">
                 <div class="produto-imagem-wrapper">
                     <span class="badge-tag">Popular</span>
-                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600" alt="Mocassim Jovem Slim" class="produto-foto">
+                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?q=80&w=600" alt="Mocassim Jovem Slim" class="produto-foto">
                 </div>
                 <div class="produto-info">
                     <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(19)</span></div>
@@ -686,7 +686,7 @@
             <div class="produto-card" data-categoria="botas">
                 <div class="produto-imagem-wrapper">
                     <span class="badge-tag desconto">10% OFF</span>
-                    <img src="https://images.unsplash.com/photo-1638247025967-b4e38f787b76?q=80&w=600" alt="Bota Chelsea em Couro" class="produto-foto">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600" alt="Bota Chelsea em Couro" class="produto-foto">
                 </div>
                 <div class="produto-info">
                     <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(15)</span></div>
@@ -734,7 +734,7 @@
             <div class="produto-card" data-categoria="social">
                 <div class="produto-imagem-wrapper">
                     <span class="badge-tag">Tendência</span>
-                    <img src="https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?q=80&w=600" alt="Mocassim Tratorado" class="produto-foto">
+                    <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600" alt="Mocassim Tratorado" class="produto-foto">
                 </div>
                 <div class="produto-info">
                     <div class="produto-avaliacao"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span class="qtd-avaliacoes">(12)</span></div>
@@ -843,13 +843,11 @@
     <script>
         let carrinho = [];
 
-        // Alternar menu mobile (hambúrguer)
         function toggleMenu() {
             const nav = document.getElementById('menu-navegacao');
             nav.classList.toggle('ativo');
         }
 
-        // Filtrar produtos por categoria
         function filtrarProdutos(categoria, botao) {
             const botoesFiltro = document.querySelectorAll('.btn-filtro');
             botoesFiltro.forEach(btn => btn.classList.remove('ativo'));
@@ -866,7 +864,6 @@
             });
         }
 
-        // Buscar produtos em tempo real
         function buscarProdutos() {
             const termo = document.getElementById('input-busca').value.toLowerCase();
             const produtos = document.querySelectorAll('.produto-card');
@@ -881,7 +878,6 @@
             });
         }
 
-        // Abrir/Fechar gaveta do carrinho
         function toggleCarrinho() {
             const modal = document.querySelector('.carrinho-modal');
             const overlay = document.querySelector('.carrinho-overlay');
@@ -889,7 +885,6 @@
             overlay.classList.toggle('ativo');
         }
 
-        // Adicionar item ao carrinho
         function adicionarAoCarrinho(nome, preco) {
             const index = carrinho.findIndex(item => item.nome === nome);
 
@@ -907,19 +902,16 @@
             toggleCarrinho();
         }
 
-        // Remover item específico do carrinho
         function removerDoCarrinho(index) {
             carrinho.splice(index, 1);
             atualizarCarrinho();
         }
 
-        // Esvaziar carrinho inteiro
         function esvaziarCarrinho() {
             carrinho = [];
             atualizarCarrinho();
         }
 
-        // Atualizar interface do carrinho e contadores
         function atualizarCarrinho() {
             const corpoCarrinho = document.querySelector('.carrinho-body');
             const contadorCarrinho = document.getElementById('cart-count');
